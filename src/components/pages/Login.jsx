@@ -7,10 +7,8 @@ import Card from "react-bootstrap/Card";
 
 const Login = () => {
   return (
-    <Container className="mt-3">
-      <Row className="justify-content-md-center">
-        <Col xs={6}>
-          <Card className="shadow-lg">
+    <Container className="mt-3" align="center">
+          <Card className="shadow-lg" style={{width: '25rem'}}>
             <Form>
               <Form.Group className="mx-4 text-start" controlId="formLogin">
                 <Form.Label className="mt-3">Login</Form.Label>
@@ -21,15 +19,13 @@ const Login = () => {
                 controlId="formPassword"
               >
                 <Form.Label>Password</Form.Label>
-                <Form.Control type="password" placeholder="Password" />
+                <Form.Control type="password"  placeholder="Password" />
               </Form.Group>
               <Button variant="dark" type="submit" className="mb-3">
                 Login
               </Button>
             </Form>
           </Card>
-        </Col>
-      </Row>
     </Container>
   );
 };
