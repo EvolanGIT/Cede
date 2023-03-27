@@ -31,7 +31,7 @@ const userSchema = new Schema({
     require: true,
   },
   phoneNumber: {
-    type: String,
+    type: Number,
     require: true,
   },
   bloodType: {
@@ -46,13 +46,15 @@ const userSchema = new Schema({
     type: Boolean,
     require: false,
   },
-  drugallergies: {
+  drugAllergies: {
     type: String,
     require: false,
+    trim: true,
   },
-  foodallergies: {
+  foodAllergies: {
     type: String,
     require: false,
+    trim: true,
   },
   contactName: {
     type: String,

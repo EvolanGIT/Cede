@@ -21,3 +21,7 @@ const providerSchema = new Schema({
     type: String,
   },
 });
+
+const Provider = model("Provider", providerSchema);
+
+module.exports = Provider;
