@@ -42,6 +42,10 @@ const userSchema = new Schema({
     type: Boolean,
     require: false,
   },
+  dni: {
+    type: Boolean,
+    require: false,
+  },
   drugallergies: {
     type: String,
     require: false,
