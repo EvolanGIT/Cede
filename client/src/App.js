@@ -3,8 +3,9 @@
 // import MainWrapper from './components/MainWrapper';
 // import SignUp from './components/pages/SignUp';
 import './App.css';
-import 'bootstrap/dist/css/bootstrap.min.css'
+import 'bootstrap/dist/css/bootstrap.min.css';
 import MainContainer from './components/MainContainer';
+import {QRCodeCanvas} from 'qrcode.react';  //importing component from QR library
 
 function App() {
   return (
@@ -14,6 +15,9 @@ function App() {
     <MainWrapper>
     </MainWrapper>
     <SignUp/> */}
+        <header className="App-header">
+    
+    </header>
     </div>
   );
 }
