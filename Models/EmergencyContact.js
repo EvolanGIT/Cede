@@ -5,7 +5,7 @@ const emergencyContactSchema = new Schema({
     type: String,
     require: true,
   },
-  sex: {
+  relationship: {
     type: String,
     require: false,
   },
