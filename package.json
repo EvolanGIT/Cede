@@ -1,0 +1,27 @@
+{
+  "name": "cede",
+  "version": "1.0.0",
+  "description": "Cede is an application created to allow users to have a standardized end-point for their information.\r When the user creates an account and saves their information, the application will create a QR code for the user. This QR code will serve as an end-point for Medical facilities as well as Paramedics to access critical information expediting the patient's care with full access to it's medical history.",
+  "main": "index.js",
+  "scripts": {
+    "start": "node server --ignore client",
+    "develop": "concurrently \"cd server && npm run start\" \"cd client && npm start\"",
+    "install": "cd server && npm i && cd ../client && npm i",
+    "seed": "cd server && npm run seed",
+    "build": "cd client && npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/EvolanGIT/Cede.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/EvolanGIT/Cede/issues"
+  },
+  "homepage": "https://github.com/EvolanGIT/Cede#readme",
+  "devDependencies": {
+    "concurrently": "^7.6.0"
+  }
+}
