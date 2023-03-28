@@ -5,6 +5,9 @@ const Allergy = require("./Allergy");
 const bcrypt = require("bcrypt");
 
 const customerSchema = new Schema({
+  _id: {
+    type:String
+},
   username: {
     type: String,
     required: true,
