@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Container from "react-bootstrap/Container";
@@ -11,20 +11,33 @@ const SignUp = () => {
   const style = {
     control: { width: "25rem" },
   };
+  const [validated, setValidated] = useState(false);
   const [gender, setGender] = useState("");
   const [bloodType, setBlodType] = useState("");
   const [doNotResuscitate, setDoNotResuscitate] = useState("");
+
+const handleSubmit = (event) => {
+  const form = event.currentTarget;
+  if (form.checkValidity() === false){
+    event.preventDefault();
+    event.stopPropagation();
+  }
+  setValidated(true);
+}
+
   return (
     <Container className="mt-3 justify-content-center" align="center">
       <Card className="shadow-lg" style={{ width: "40rem" }}>
-        <Form>
+        <Form noValidate validated={validated} onSubmit={handleSubmit}>
           <Form.Group className="mx-4 text-start" controlId="formEmailSignUp">
             <Form.Label className="mt-3">First Name</Form.Label>
             <Form.Control
               style={style.control}
+              required
               type="text"
               placeholder="Enter first name"
             />
+            <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
             <Form.Label className="mt-3">Last Name</Form.Label>
             <Form.Control
               style={style.control}
