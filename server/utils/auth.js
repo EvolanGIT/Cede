@@ -28,8 +28,8 @@ module.exports = {
     //ASK IF WE WILL USE FIRSTNAME AS PART OF THE LOGIN PROCESS.
     return req;
     },
-    signToken: function ({ firstName, email, _id }) {
-    const payload = { firstName, email, _id };
+    signToken: function ({ email, _id }) {
+    const payload = { email, _id };
 
     return jwt.sign({ data: payload }, secret, { expiresIn: expiration });
     },

@@ -27,8 +27,8 @@ const handleSubmit = (event) => {
 
   return (
     <Container className="mt-3 justify-content-center" align="center">
-      <Card className="shadow-lg" style={{ width: "40rem" }}>
-        <Form noValidate validated={validated} onSubmit={handleSubmit}>
+      <Card className="shadow-lg" style={{ width: "40rem", backgroundColor: '#0e385c', color:'#959696' }}>
+        <Form>
           <Form.Group className="mx-4 text-start" controlId="formEmailSignUp">
             <Form.Label className="mt-3">First Name</Form.Label>
             <Form.Control
@@ -127,7 +127,7 @@ const handleSubmit = (event) => {
                 name="group1"
                 type="checkbox"
                 id="bloodTypeOpos"
-                checked={bloodType === "O-"}
+                checked={bloodType === "O+"}
                 onChange={() => setBlodType("O-")}
               />
               <Form.Check
