@@ -75,7 +75,7 @@
 
 [Denart Ifurung](https://github.com/difurung)<br>
 [Charles Beatty](https://github.com/beattycharles)<br>
-[Alberto De Armas](https://github.com/nosbeto)
+[Alberto De Armas](https://github.com/nosbeto)<br>
 [Yon Bermudez](https://github.com/EvolanGIT)<br>
 [Edwin Pietrowksi](https://github.com/BogartDME)<br>
 
