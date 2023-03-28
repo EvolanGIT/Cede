@@ -114,7 +114,7 @@ const SignUp = () => {
                 name="group1"
                 type="checkbox"
                 id="bloodTypeOpos"
-                checked={bloodType === "O-"}
+                checked={bloodType === "O+"}
                 onChange={() => setBlodType("O-")}
               />
               <Form.Check
