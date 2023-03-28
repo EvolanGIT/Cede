@@ -58,9 +58,11 @@ const handleSubmit = (event) => {
               style={style.control}
               type="email"
               placeholder="Enter email"
+              pattern="^(.+)@(.+)$"
+              
             />
             <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
-            <Form.Control.Feedback type="invalid"> Please Enter An Email Address.</Form.Control.Feedback>
+            <Form.Control.Feedback type="invalid"> Please Enter A Valid Email Address.</Form.Control.Feedback>
             </Form.Group>
             <Form.Group>
             <Form.Label className="mt-3">Password </Form.Label>
