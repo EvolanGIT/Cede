@@ -33,6 +33,23 @@ const typeDefs = gql`
 
     type Mutation {
         Users: [User]!
-        User(User)
+        User(UserId: ID!): User
+        me: User
     }
 
+type Mutation {
+    addUser(firstName: String!, lastName: String!, email: String!, password: String!): Auth 
+    login(email: String!, password: String!): Auth
+
+    updateFirstName(userId: ID!, firstName: String!): User
+    updateLastName(userId: ID!, lastName: String!): User
+    updateEmail(userId: ID!, email: String!): User
+    updatePhoneNumber(userId: ID!, phoneNumber: String!): User
+    updateEmail(userId: ID!, email: String!): User
+    updateDnr(userId: ID!, dnr: String!): User
+    updateDrugallergies(userId: ID!, drugallergies: String!): User
+    updateFoodallergies(userId: ID!, foodallergies: String!): User
+    updateContactName(userId: ID!, contactName: String!): User
+    updateRelationship(userId: ID!, relationship: String!): User
+    updateContactPhoneNumber(userId: ID!, updateContactPhoneNumber: String!): User
+}

@@ -1,5 +1,5 @@
 const { AuthenticationError } = require('apollo-server-express');
-//const { User } = require('../models');
+const { User } = require('../models');
 const { signToken } = require('../utils/auth');
 const stripe = require('stripe')('sk_test_4eC39HqLyjWDarjtT1zdp7dc');
 
@@ -10,13 +10,13 @@ const resolvers = {
             return User.find();
         },
     
-        User: async (parent, { UserId }) => {
-            return User.findOne({ _id: UserId });
+        User: async (parent, { User }) => {
+            return User.findOne({ id });
         },
-        // By adding context to our query, we can retrieve the logged in user without specifically searching for them
+
         me: async (parent, args, context) => {
             if (context.user) {
-            return User.findOne({ _id: context.user._id });
+            return User.findOne({ id: context.user.id });
             }
             throw new AuthenticationError('You need to be logged in!');
         },
@@ -46,12 +46,12 @@ const resolvers = {
             return { token, user };
         },
 
-        firstName: async (parent, { userId, firstName }, context) => {
+        updateFirstName: async (parent, { userId, firstName }, context) => {
             if (context.user) {
                 return User.findOneAndUpdate(
                     { id: userId },
                     {
-                    $set: { firstName: firstName }, //check with tutor
+                    $set: { firstName }, //check with tutor
                     },
                     {
                     new: true,
@@ -62,12 +62,12 @@ const resolvers = {
                 throw new AuthenticationError('You need to be logged in!');
             },
             
-        lastName: async (parent, { userId, lastName }, context) => {
+        updateLastName: async (parent, { userId, lastName }, context) => {
             if (context.user) {
             return User.findOneAndUpdate(
                 { id: userId },
                 {
-                $set: { lastNames: lastName },
+                $set: { lastNames },
                 },
                 {
                 new: true,
@@ -78,12 +78,12 @@ const resolvers = {
             throw new AuthenticationError('You need to be logged in!');
         },
 
-        email: async (parent, { userId, email }, context) => {
+        updateEmail: async (parent, { userId, email }, context) => {
             if (context.user) {
             return User.findOneAndUpdate(
                 { id: userId },
                 {
-                $set: { email: email },
+                $set: { email },
                 },
                 {
                 new: true,
@@ -94,60 +94,13 @@ const resolvers = {
             throw new AuthenticationError('You need to be logged in!');
         },
 
-        gender: async (parent, { userId, gender }, context) => {
-            if (context.user) {
-            return User.findOneAndUpdate(
-                { id: userId },
-                {
-                $set: { gender: gender },
-                },
-                {
-                new: true,
-                runValidators: true,
-                }
-            );
-            }
-            throw new AuthenticationError('You need to be logged in!');
-        },
 
-        phoneNumber: async (parent, { userId,phoneNumber }, context) => {
+        updatePhoneNumber: async (parent, { userId, phoneNumber }, context) => {
             if (context.user) {
             return User.findOneAndUpdate(
                 { id: userId },
                 {
-                $set: {phoneNumber: phoneNumber },
-                },
-                {
-                new: true,
-                runValidators: true,
-                }
-            );
-            }
-            throw new AuthenticationError('You need to be logged in!');
-        },
-
-        bloodType: async (parent, { userId, bloodType }, context) => {
-            if (context.user) {
-            return User.findOneAndUpdate(
-                { id: userId },
-                {
-                $set: { bloodType: bloodType },
-                },
-                {
-                new: true,
-                runValidators: true,
-                }
-            );
-            }
-            throw new AuthenticationError('You need to be logged in!');
-        },
-
-        gender: async (parent, { userId, gender }, context) => {
-            if (context.user) {
-            return User.findOneAndUpdate(
-                { id: userId },
-                {
-                $set: { gender: gender },
+                $set: {phoneNumber },
                 },
                 {
                 new: true,
@@ -158,12 +111,12 @@ const resolvers = {
             throw new AuthenticationError('You need to be logged in!');
         },
         
-        phoneNumber: async (parent, { userId, phoneNumber }, context) => {
+        updatePhoneNumber: async (parent, { userId, phoneNumber }, context) => {
             if (context.user) {
             return User.findOneAndUpdate(
                 { id: userId },
                 {
-                $set: { phoneNumber: phoneNumber },
+                $set: { phoneNumber },
                 },
                 {
                 new: true,
@@ -174,12 +127,12 @@ const resolvers = {
             throw new AuthenticationError('You need to be logged in!');
         },
 
-        bloodType: async (parent, { userId, bloodType }, context) => {
+        updateDnr: async (parent, { userId, dnr }, context) => {
             if (context.user) {
             return User.findOneAndUpdate(
                 { id: userId },
                 {
-                $set: { bloodType: bloodType },
+                $set: { dnr },
                 },
                 {
                 new: true,
@@ -190,12 +143,12 @@ const resolvers = {
             throw new AuthenticationError('You need to be logged in!');
         },
 
-        dnr: async (parent, { userId, dnr }, context) => {
+        updateDrugallergies: async (parent, { userId, drugallergies }, context) => {
             if (context.user) {
             return User.findOneAndUpdate(
                 { id: userId },
                 {
-                $set: { dnr: dnr },
+                $set: { drugallergies },
                 },
                 {
                 new: true,
@@ -206,12 +159,12 @@ const resolvers = {
             throw new AuthenticationError('You need to be logged in!');
         },
 
-        drugallergies: async (parent, { userId, drugallergies }, context) => {
+        updateFoodallergies: async (parent, { userId, foodallergies }, context) => {
             if (context.user) {
             return User.findOneAndUpdate(
                 { id: userId },
                 {
-                $set: { drugallergies: drugallergies },
+                $set: { foodallergies },
                 },
                 {
                 new: true,
@@ -222,28 +175,12 @@ const resolvers = {
             throw new AuthenticationError('You need to be logged in!');
         },
 
-        foodallergies: async (parent, { userId, foodallergies }, context) => {
+        updateContactName: async (parent, { userId, contactName }, context) => {
             if (context.user) {
             return User.findOneAndUpdate(
                 { id: userId },
                 {
-                $set: { foodallergies: foodallergies },
-                },
-                {
-                new: true,
-                runValidators: true,
-                }
-            );
-            }
-            throw new AuthenticationError('You need to be logged in!');
-        },
-
-        contactName: async (parent, { userId, contactName }, context) => {
-            if (context.user) {
-            return User.findOneAndUpdate(
-                { id: userId },
-                {
-                $set: { contactName: contactName },
+                $set: { contactName },
                 },
                 {
                 new: true,
@@ -254,12 +191,12 @@ const resolvers = {
             throw new AuthenticationError('You need to be logged in!');
         },
             
-        relationship: async (parent, { userId, relationship }, context) => {
+        updateRelationship: async (parent, { userId, relationship }, context) => {
             if (context.user) {
             return User.findOneAndUpdate(
                 { id: userId },
                 {
-                $set: { relationship: relationship },
+                $set: { relationship },
                 },
                 {
                 new: true,
@@ -270,12 +207,12 @@ const resolvers = {
             throw new AuthenticationError('You need to be logged in!');
         },
 
-        contactPhoneNumber: async (parent, { userId, contactPhoneNumber }, context) => {
+        updateContactPhoneNumber: async (parent, { userId, contactPhoneNumber }, context) => {
             if (context.user) {
             return User.findOneAndUpdate(
                 { id: userId },
                 {
-                $set: { contactPhoneNumber: contactPhoneNumber },
+                $set: { contactPhoneNumber },
                 },
                 {
                 new: true,
@@ -286,7 +223,9 @@ const resolvers = {
             throw new AuthenticationError('You need to be logged in!');
         },
     }
-}
+};
+
+module.exports = resolvers;
 
         
 
