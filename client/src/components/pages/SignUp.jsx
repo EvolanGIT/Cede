@@ -16,7 +16,7 @@ const SignUp = () => {
   const [doNotResuscitate, setDoNotResuscitate] = useState("");
   return (
     <Container className="mt-3 justify-content-center" align="center">
-      <Card className="shadow-lg" style={{ width: "40rem" }}>
+      <Card className="shadow-lg" style={{ width: "40rem", backgroundColor: '#0e385c', color:'#959696' }}>
         <Form>
           <Form.Group className="mx-4 text-start" controlId="formEmailSignUp">
             <Form.Label className="mt-3">First Name</Form.Label>

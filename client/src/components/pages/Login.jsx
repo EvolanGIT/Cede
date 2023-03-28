@@ -8,7 +8,7 @@ import Card from "react-bootstrap/Card";
 const Login = () => {
   return (
     <Container className="mt-3" align="center">
-          <Card className="shadow-lg" style={{width: '25rem'}}>
+          <Card className="shadow-lg" style={{backgroundColor: '#0e385c', color:'#959696', width: '25rem'}}>
             <Form>
               <Form.Group className="mx-4 text-start" controlId="formLogin">
                 <Form.Label className="mt-3">Login</Form.Label>
