@@ -4,7 +4,8 @@ import Navbar from "react-bootstrap/Navbar";
 
 const NavBar = ({ currentPage, handlePageChange }) => {
   return (
-    <Navbar bg="dark" variant="dark">
+    // took out bg dark
+    <Navbar variant="dark">
       <Container>
         <Navbar.Brand
           href="#home"

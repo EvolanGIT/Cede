@@ -22,7 +22,15 @@ const MainContainer = () => {
   };
   const handlePageChange = (page) => setCurrentPage(page);
   return (
-    <div>
+    <div style={{ 
+      backgroundImage: `url("https://wallpaperaccess.com/full/4178252.jpg")`,
+      backgroundSize: '100%',
+      backgroundRepeat: 'repeat-y',
+      height: '100vw'
+      
+      
+
+    }}>
       {/* We are passing the currentPage from state and the function to update it */}
       <NavBar currentPage={currentPage} handlePageChange={handlePageChange} />
       {/* Here we are calling the renderPage method which will return a component  */}
