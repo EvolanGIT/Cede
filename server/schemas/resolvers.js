@@ -1,25 +1,27 @@
 const { AuthenticationError } = require('apollo-server-express');
-const { User } = require('../models');
+const { Customer } = require('../models');
 const { signToken } = require('../utils/auth');
 const stripe = require('stripe')('sk_test_4eC39HqLyjWDarjtT1zdp7dc');
-
+const User= Customer;
 
 const resolvers = {
     Query: {
-        Users: async () => {
-            return User.find();
-        },
-    
+        
         User: async (parent, { User }) => {
-            return User.findOne({ id });
+            return User.findOne({ _id });
         },
 
         me: async (parent, args, context) => {
             if (context.user) {
-            return User.findOne({ id: context.user.id });
+            return User.findOne({ _id: context.user._id });
             }
             throw new AuthenticationError('You need to be logged in!');
         },
+
+        Provider: async () => {
+        }
+        
+
     },
 
     Mutation: {
@@ -49,7 +51,7 @@ const resolvers = {
         updateFirstName: async (parent, { userId, firstName }, context) => {
             if (context.user) {
                 return User.findOneAndUpdate(
-                    { id: userId },
+                    { _id: userId },
                     {
                     $set: { firstName }, //check with tutor
                     },
@@ -65,7 +67,7 @@ const resolvers = {
         updateLastName: async (parent, { userId, lastName }, context) => {
             if (context.user) {
             return User.findOneAndUpdate(
-                { id: userId },
+                { _id: userId },
                 {
                 $set: { lastNames },
                 },
@@ -81,7 +83,7 @@ const resolvers = {
         updateEmail: async (parent, { userId, email }, context) => {
             if (context.user) {
             return User.findOneAndUpdate(
-                { id: userId },
+                { _id: userId },
                 {
                 $set: { email },
                 },
@@ -98,7 +100,7 @@ const resolvers = {
         updatePhoneNumber: async (parent, { userId, phoneNumber }, context) => {
             if (context.user) {
             return User.findOneAndUpdate(
-                { id: userId },
+                { _id: userId },
                 {
                 $set: {phoneNumber },
                 },
@@ -114,7 +116,7 @@ const resolvers = {
         updatePhoneNumber: async (parent, { userId, phoneNumber }, context) => {
             if (context.user) {
             return User.findOneAndUpdate(
-                { id: userId },
+                { _id: userId },
                 {
                 $set: { phoneNumber },
                 },
@@ -130,7 +132,7 @@ const resolvers = {
         updateDnr: async (parent, { userId, dnr }, context) => {
             if (context.user) {
             return User.findOneAndUpdate(
-                { id: userId },
+                { _id: userId },
                 {
                 $set: { dnr },
                 },
@@ -146,7 +148,7 @@ const resolvers = {
         updateDrugallergies: async (parent, { userId, drugallergies }, context) => {
             if (context.user) {
             return User.findOneAndUpdate(
-                { id: userId },
+                { _id: userId },
                 {
                 $set: { drugallergies },
                 },
@@ -162,7 +164,7 @@ const resolvers = {
         updateFoodallergies: async (parent, { userId, foodallergies }, context) => {
             if (context.user) {
             return User.findOneAndUpdate(
-                { id: userId },
+                { _id: userId },
                 {
                 $set: { foodallergies },
                 },
@@ -178,7 +180,7 @@ const resolvers = {
         updateContactName: async (parent, { userId, contactName }, context) => {
             if (context.user) {
             return User.findOneAndUpdate(
-                { id: userId },
+                { _id: userId },
                 {
                 $set: { contactName },
                 },
@@ -194,7 +196,7 @@ const resolvers = {
         updateRelationship: async (parent, { userId, relationship }, context) => {
             if (context.user) {
             return User.findOneAndUpdate(
-                { id: userId },
+                { _id: userId },
                 {
                 $set: { relationship },
                 },
@@ -210,7 +212,7 @@ const resolvers = {
         updateContactPhoneNumber: async (parent, { userId, contactPhoneNumber }, context) => {
             if (context.user) {
             return User.findOneAndUpdate(
-                { id: userId },
+                { _id: userId },
                 {
                 $set: { contactPhoneNumber },
                 },
