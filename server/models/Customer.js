@@ -1,16 +1,21 @@
 const { Schema, model } = require("mongoose");
 const Login = require("./Login");
-const EmergencyContact = require("./EmergencyContact")
-const Allergy = require("./Allergy")
+const EmergencyContact = require("./EmergencyContact");
+const Allergy = require("./Allergy");
 const bcrypt = require("bcrypt");
 
-const userSchema = new Schema({
+const customerSchema = new Schema({
   username: {
     type: String,
     required: true,
     unique: true,
   },
-  login: [Login],
+  login: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "Login",
+    },
+  ],
   firstName: {
     type: String,
     required: true,
@@ -28,7 +33,7 @@ const userSchema = new Schema({
     unique: true,
     match: [/.+@.+\..+/, "Must use a valid email address"],
   },
-  sex: {
+  gender: {
     type: String,
     enum: ["Female", "Male"],
     required: true,
@@ -43,7 +48,7 @@ const userSchema = new Schema({
   },
   bloodType: {
     type: String,
-    required:true,
+    required: true,
     enum: {
       values: ["A+", "A-", "B+", "B-", "O+", "O-", "AB+", "AB-"],
       message:
@@ -51,12 +56,25 @@ const userSchema = new Schema({
     },
   },
   DNR: {
-    type: Boolean
+    type: Boolean,
   },
-  EmergencyContact:[EmergencyContact],
-  Allergy: [Allergy]
+  DNI: {
+    type: Boolean,
+  },
+  EmergencyContact: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "EmergencyContact",
+    },
+  ],
+  Allergy: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "Allergy",
+    },
+  ],
 });
 
-const User = model('User', userSchema);
+const Customer = model("Customer", customerSchema);
 
-module.exports = User;
+module.exports = Customer;

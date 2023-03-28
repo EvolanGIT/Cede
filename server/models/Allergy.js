@@ -1,4 +1,5 @@
 const { Schema, model } = require("mongoose");
+const User = require('./Customer')
 
 const allergySchema = new Schema ({
     allergyDescription:{
