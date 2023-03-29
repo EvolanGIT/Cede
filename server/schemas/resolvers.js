@@ -1,57 +1,56 @@
 const { AuthenticationError } = require('apollo-server-express');
-const { Customer } = require('../models');
+const { Customer} = require('../models');
 const { signToken } = require('../utils/auth');
 const stripe = require('stripe')('sk_test_4eC39HqLyjWDarjtT1zdp7dc');
-const User= Customer;
 
 const resolvers = {
     Query: {
         
-        User: async (parent, { User }) => {
-            return User.findOne({ _id });
+        Customer: async (parent, { Customer }) => {
+            return Customer.findOne({ _id });
         },
 
         me: async (parent, args, context) => {
             if (context.user) {
-            return User.findOne({ _id: context.user._id });
+            return Customer.findOne({ _id: context.user._id });
             }
             throw new AuthenticationError('You need to be logged in!');
         },
 
-        Provider: async () => {
-        }
+        // Provider: async () => {
+        // }
         
 
     },
 
     Mutation: {
-        addUser: async (parent, { name, email, password }) => {
-            const user = await User.create({ firstName, lastName, email, password });
-            const token = signToken(user);
+        addCustomer: async (parent, { name, email, password }) => {
+            const customer = await Customer.create({ firstName, lastName, email, password });
+            const token = signToken(customer);
         
-            return { token, user };
+            return { token, customer };
         },
         login: async (parent, { email, password }) => {
-            const user = await User.findOne({ email });
+            const customer = await Customer.findOne({ email });
     
-            if (!user) {
-                throw new AuthenticationError('No user with this email found!');
+            if (!customer) {
+                throw new AuthenticationError('No customer with this email found!');
             }
     
-            const correctPw = await User.isCorrectPassword(password);
+            const correctPw = await Customer.isCorrectPassword(password);
     
             if (!correctPw) {
                 throw new AuthenticationError('Incorrect password!');
             }
     
-            const token = signToken(user);
-            return { token, user };
+            const token = signToken(customer);
+            return { token, customer };
         },
 
-        updateFirstName: async (parent, { userId, firstName }, context) => {
+        updateFirstName: async (parent, { customerId, firstName }, context) => {
             if (context.user) {
-                return User.findOneAndUpdate(
-                    { _id: userId },
+                return Customer.findOneAndUpdate(
+                    { _id: customerId },
                     {
                     $set: { firstName }, //check with tutor
                     },
@@ -64,12 +63,12 @@ const resolvers = {
                 throw new AuthenticationError('You need to be logged in!');
             },
             
-        updateLastName: async (parent, { userId, lastName }, context) => {
+        updateLastName: async (parent, { customerId, lastName }, context) => {
             if (context.user) {
-            return User.findOneAndUpdate(
-                { _id: userId },
+            return Customer.findOneAndUpdate(
+                { _id: customerId },
                 {
-                $set: { lastNames },
+                $set: { lastName },
                 },
                 {
                 new: true,
@@ -80,10 +79,10 @@ const resolvers = {
             throw new AuthenticationError('You need to be logged in!');
         },
 
-        updateEmail: async (parent, { userId, email }, context) => {
+        updateEmail: async (parent, { customerId, email }, context) => {
             if (context.user) {
-            return User.findOneAndUpdate(
-                { _id: userId },
+            return Customer.findOneAndUpdate(
+                { _id: customerId },
                 {
                 $set: { email },
                 },
@@ -97,10 +96,10 @@ const resolvers = {
         },
 
 
-        updatePhoneNumber: async (parent, { userId, phoneNumber }, context) => {
+        updatePhoneNumber: async (parent, { customerId, phoneNumber }, context) => {
             if (context.user) {
-            return User.findOneAndUpdate(
-                { _id: userId },
+            return Customer.findOneAndUpdate(
+                { _id: customerId },
                 {
                 $set: {phoneNumber },
                 },
@@ -113,10 +112,10 @@ const resolvers = {
             throw new AuthenticationError('You need to be logged in!');
         },
         
-        updatePhoneNumber: async (parent, { userId, phoneNumber }, context) => {
+        updatePhoneNumber: async (parent, { customerId, phoneNumber }, context) => {
             if (context.user) {
-            return User.findOneAndUpdate(
-                { _id: userId },
+            return Customer.findOneAndUpdate(
+                { _id: customerId },
                 {
                 $set: { phoneNumber },
                 },
@@ -129,10 +128,10 @@ const resolvers = {
             throw new AuthenticationError('You need to be logged in!');
         },
 
-        updateDnr: async (parent, { userId, dnr }, context) => {
+        updateDnr: async (parent, { customerId, dnr }, context) => {
             if (context.user) {
-            return User.findOneAndUpdate(
-                { _id: userId },
+            return Customer.findOneAndUpdate(
+                { _id: customerId },
                 {
                 $set: { dnr },
                 },
@@ -145,10 +144,10 @@ const resolvers = {
             throw new AuthenticationError('You need to be logged in!');
         },
 
-        updateDrugallergies: async (parent, { userId, drugallergies }, context) => {
+        updateDrugallergies: async (parent, { customerId, drugallergies }, context) => {
             if (context.user) {
-            return User.findOneAndUpdate(
-                { _id: userId },
+            return Customer.findOneAndUpdate(
+                { _id: customerId },
                 {
                 $set: { drugallergies },
                 },
@@ -161,10 +160,10 @@ const resolvers = {
             throw new AuthenticationError('You need to be logged in!');
         },
 
-        updateFoodallergies: async (parent, { userId, foodallergies }, context) => {
+        updateFoodallergies: async (parent, { customerId, foodallergies }, context) => {
             if (context.user) {
-            return User.findOneAndUpdate(
-                { _id: userId },
+            return Customer.findOneAndUpdate(
+                { _id: customerId },
                 {
                 $set: { foodallergies },
                 },
@@ -177,10 +176,10 @@ const resolvers = {
             throw new AuthenticationError('You need to be logged in!');
         },
 
-        updateContactName: async (parent, { userId, contactName }, context) => {
+        updateContactName: async (parent, { customerId, contactName }, context) => {
             if (context.user) {
-            return User.findOneAndUpdate(
-                { _id: userId },
+            return Customer.findOneAndUpdate(
+                { _id: customerId },
                 {
                 $set: { contactName },
                 },
@@ -193,10 +192,10 @@ const resolvers = {
             throw new AuthenticationError('You need to be logged in!');
         },
             
-        updateRelationship: async (parent, { userId, relationship }, context) => {
+        updateRelationship: async (parent, { customerId, relationship }, context) => {
             if (context.user) {
-            return User.findOneAndUpdate(
-                { _id: userId },
+            return Customer.findOneAndUpdate(
+                { _id: customerId },
                 {
                 $set: { relationship },
                 },
@@ -209,10 +208,10 @@ const resolvers = {
             throw new AuthenticationError('You need to be logged in!');
         },
 
-        updateContactPhoneNumber: async (parent, { userId, contactPhoneNumber }, context) => {
+        updateContactPhoneNumber: async (parent, { customerId, contactPhoneNumber }, context) => {
             if (context.user) {
-            return User.findOneAndUpdate(
-                { _id: userId },
+            return Customer.findOneAndUpdate(
+                { _id: customerId },
                 {
                 $set: { contactPhoneNumber },
                 },
