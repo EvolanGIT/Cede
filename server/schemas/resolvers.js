@@ -1,13 +1,16 @@
 const { AuthenticationError } = require('apollo-server-express');
-const { Customer} = require('../models');
+const { Customer, Allergy, EmergencyContact, Login, Provider} = require('../models');
 const { signToken } = require('../utils/auth');
 const stripe = require('stripe')('sk_test_4eC39HqLyjWDarjtT1zdp7dc');
 
 const resolvers = {
     Query: {
+        customers: async () => {
+            return Customer.find();
+        },
         
-        Customer: async (parent, { Customer }) => {
-            return Customer.findOne({ _id });
+        Customer: async (_, {customerId}) => {
+            return Customer.findOne(customerId);
         },
 
         me: async (parent, args, context) => {
@@ -112,12 +115,13 @@ const resolvers = {
             throw new AuthenticationError('You need to be logged in!');
         },
         
-        updatePhoneNumber: async (parent, { customerId, phoneNumber }, context) => {
+
+        updateDNR: async (parent, { customerId, DNR }, context) => {
             if (context.user) {
             return Customer.findOneAndUpdate(
                 { _id: customerId },
                 {
-                $set: { phoneNumber },
+                $set: { DNR },
                 },
                 {
                 new: true,
@@ -128,12 +132,28 @@ const resolvers = {
             throw new AuthenticationError('You need to be logged in!');
         },
 
-        updateDnr: async (parent, { customerId, dnr }, context) => {
+            updateDNI: async (parent, { customerId, DNI }, context) => {
+        if (context.user) {
+        return Customer.findOneAndUpdate(
+            { _id: customerId },
+            {
+            $set: { DNI },
+            },
+            {
+            new: true,
+            runValidators: true,
+            }
+        );
+        }
+        throw new AuthenticationError('You need to be logged in!');
+    },
+
+        updateAllergies: async (parent, { customerId, allergyDescription }, context) => {
             if (context.user) {
             return Customer.findOneAndUpdate(
                 { _id: customerId },
                 {
-                $set: { dnr },
+                $set: { allergyDescription },
                 },
                 {
                 new: true,
@@ -144,12 +164,28 @@ const resolvers = {
             throw new AuthenticationError('You need to be logged in!');
         },
 
-        updateDrugallergies: async (parent, { customerId, drugallergies }, context) => {
+        // updateFoodallergies: async (parent, { customerId, foodallergies }, context) => {
+        //     if (context.user) {
+        //     return Customer.findOneAndUpdate(
+        //         { _id: customerId },
+        //         {
+        //         $set: { foodallergies },
+        //         },
+        //         {
+        //         new: true,
+        //         runValidators: true,
+        //         }
+        //     );
+        //     }
+        //     throw new AuthenticationError('You need to be logged in!');
+        // },
+
+        updateContactFirstName: async (parent, { customerId, firstName }, context) => {
             if (context.user) {
             return Customer.findOneAndUpdate(
                 { _id: customerId },
                 {
-                $set: { drugallergies },
+                $set: { firstName },
                 },
                 {
                 new: true,
@@ -160,28 +196,12 @@ const resolvers = {
             throw new AuthenticationError('You need to be logged in!');
         },
 
-        updateFoodallergies: async (parent, { customerId, foodallergies }, context) => {
+        updateContactLastName: async (parent, { customerId, lastName }, context) => {
             if (context.user) {
             return Customer.findOneAndUpdate(
                 { _id: customerId },
                 {
-                $set: { foodallergies },
-                },
-                {
-                new: true,
-                runValidators: true,
-                }
-            );
-            }
-            throw new AuthenticationError('You need to be logged in!');
-        },
-
-        updateContactName: async (parent, { customerId, contactName }, context) => {
-            if (context.user) {
-            return Customer.findOneAndUpdate(
-                { _id: customerId },
-                {
-                $set: { contactName },
+                $set: { lastName },
                 },
                 {
                 new: true,

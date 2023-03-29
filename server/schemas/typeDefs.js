@@ -2,7 +2,7 @@ const { gql } = require("apollo-server-express");
 
 const typeDefs = gql`
 type Customer {
-_id: String
+_id: ID
 username: String
 birthdate: String
 firstName: String
@@ -13,30 +13,30 @@ phoneNumber: String
 bloodType: String
 DNR: Boolean
 DNI: Boolean
-Allergy: [Allergy]
-EmergencyContact: [EmergencyContact]
+Allergy: [Allergy]!
+EmergencyContact: [EmergencyContact]!
 }
 
 type Provider {
-_id: String
+_id: ID
 providerName: String
 login: [Login]
 }
 
 type Login {
-_id: String
+_id: ID
 username: String
 password: String
 loginType: String
 }
 
 type Allergy {
-_id: String
+_id: ID
 allergyDescription: String
 }
 
 type EmergencyContact {
-_id: String
+_id: ID
 firstName: String
 lastName: String
 phoneNumber: String
@@ -49,11 +49,12 @@ Customer: Customer
 
 type Query {
 Customer(customer: ID!): Customer
+customers: [Customer]!
 me: Customer
 }
 
 type Mutation {
-addUser(
+addCustomer(
     firstName: String!
     lastName: String!
     email: String!
@@ -68,12 +69,12 @@ updatePhoneNumber(customerId: ID!, phoneNumber: String!): Customer
 updateDNR(customerId: ID!, DNR: String!): Customer
 updateDNI(customerId: ID!, DNI: String!): Customer
 
-updateAllergyDescription(customerId: ID!, allergyDescription: String!): Allergy
+updateAllergies(customerId: ID!, allergyDescription: String!): Allergy
 
-updateEmergencyFirstName(customerId: ID!, firstName: String!): EmergencyContact
-updateEmergencyLastName(customerId: ID!, lastName: String!): EmergencyContact
+updateContactFirstName(customerId: ID!, firstName: String!): EmergencyContact
+updateContactLastName(customerId: ID!, lastName: String!): EmergencyContact
 updateRelationship(customerId: ID!, relationship: String!): EmergencyContact
-updateEmergencyPhoneNumber(customerId: ID!, phoneNumber: String!): EmergencyContact
+updateContactPhoneNumber(customerId: ID!, phoneNumber: String!): EmergencyContact
 }
 `;
 
