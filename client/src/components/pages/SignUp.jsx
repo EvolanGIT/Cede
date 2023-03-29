@@ -2,26 +2,43 @@ import React, { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Container from "react-bootstrap/Container";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
+// import Row from "react-bootstrap/Row";
+// import Col from "react-bootstrap/Col";
 import Card from "react-bootstrap/Card";
 //creating a comment
+import { useMutation } from "@apollo/client";
+import { ADD_CUSTOMER } from "../../utils/mutations";
+import Auth from "../../utils/auth";
 
 const SignUp = () => {
   const style = {
     control: { width: "25rem" },
   };
+  const [customerData, setCustomer] = useState({firstName: "", lastName: "", email: "", password: ""});
   const [validated, setValidated] = useState(false);
   const [gender, setGender] = useState("");
   const [bloodType, setBlodType] = useState("");
   const [doNotResuscitate, setDoNotResuscitate] = useState("");
+  const [addCustomer]= useMutation(ADD_CUSTOMER);
 
-  const handleSubmit = (event) => {
+
+
+  const inputChange= (event) => {
+    const {name, value}= event.target 
+    setCustomer({...customerData, [name]: value})
+    }
+
+  const handleSubmit = async (event) => {
     const form = event.currentTarget;
     if (form.checkValidity() === false) {
       event.preventDefault();
       event.stopPropagation();
     }
+    console.log(customerData);
+    try {
+      const {data}= await addCustomer({variables:{...customerData}})
+      Auth.login(data.addCustomer.token)
+    } catch (err){console.error(err)}
     setValidated(true);
   };
 
@@ -38,6 +55,9 @@ const SignUp = () => {
               style={style.control}
               required
               type="text"
+              name= "firstName"
+              onChange={inputChange}
+              value= {customerData.firstName}
               placeholder="Enter first name"
             />
             <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
@@ -51,6 +71,9 @@ const SignUp = () => {
               required
               style={style.control}
               type="text"
+              name= "lastName"
+              onChange={inputChange}
+              value= {customerData.lastName}
               placeholder="Enter last name"
             />
             <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
@@ -64,6 +87,9 @@ const SignUp = () => {
               required
               style={style.control}
               type="email"
+              name= "email"
+              onChange={inputChange}
+              value= {customerData.email}
               placeholder="Enter email"
               pattern="^(.+)@(.+)$"
             />
@@ -78,6 +104,9 @@ const SignUp = () => {
               required
               style={style.control}
               type="password"
+              name="password"
+              onChange={inputChange}
+              value= {customerData.password}
               placeholder="Password"
               pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
             />
@@ -87,7 +116,7 @@ const SignUp = () => {
               letter, and at least 8 or more characters
             </Form.Control.Feedback>
           </Form.Group>
-          <Form.Group className="mx-4 text-start">
+          {/* <Form.Group className="mx-4 text-start">
             <Form.Label className="mt-3">Gender</Form.Label>
             {["checkbox"].map((type) => (
               <div className="mb-3">
@@ -233,7 +262,7 @@ const SignUp = () => {
           <Form.Group
             className="mx-4 m-3 text-start"
             controlId="formPasswordSignUp"
-          ></Form.Group>
+          ></Form.Group> */}
           <Button variant="dark" type="submit" className="mb-3">
             Sign-Up
           </Button>
