@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Container from "react-bootstrap/Container";
@@ -11,39 +11,73 @@ const SignUp = () => {
   const style = {
     control: { width: "25rem" },
   };
+  const [validated, setValidated] = useState(false);
   const [gender, setGender] = useState("");
   const [bloodType, setBlodType] = useState("");
   const [doNotResuscitate, setDoNotResuscitate] = useState("");
+
+const handleSubmit = (event) => {
+  const form = event.currentTarget;
+  if (form.checkValidity() === false){
+    event.preventDefault();
+    event.stopPropagation();
+  }
+  setValidated(true);
+}
+
   return (
     <Container className="mt-3 justify-content-center" align="center">
       <Card className="shadow-lg" style={{ width: "40rem", backgroundColor: '#0e385c', color:'#959696' }}>
-        <Form>
-          <Form.Group className="mx-4 text-start" controlId="formEmailSignUp">
+        <Form noValidate validated={validated} onSubmit={handleSubmit}>
+          <Form.Group controlId="formEmailSignUp">
             <Form.Label className="mt-3">First Name</Form.Label>
             <Form.Control
               style={style.control}
+              required
               type="text"
               placeholder="Enter first name"
             />
+            <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
+            <Form.Control.Feedback type="invalid"> Please Enter A First Name.</Form.Control.Feedback>
+            </Form.Group>
+            <Form.Group>
             <Form.Label className="mt-3">Last Name</Form.Label>
             <Form.Control
+            required
               style={style.control}
               type="text"
               placeholder="Enter last name"
             />
+            <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
+            <Form.Control.Feedback type="invalid"> Please Enter A Last Name.</Form.Control.Feedback>
+            </Form.Group>
+            <Form.Group>
             <Form.Label className="mt-3">Email address</Form.Label>
             <Form.Control
+            required
               style={style.control}
               type="email"
               placeholder="Enter email"
+              pattern="^(.+)@(.+)$"
+              
             />
-            <Form.Label className="mt-3">Password</Form.Label>
+            <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
+            <Form.Control.Feedback type="invalid"> Please Enter A Valid Email Address.</Form.Control.Feedback>
+            </Form.Group>
+            <Form.Group>
+            <Form.Label className="mt-3">Password </Form.Label>
             <Form.Control
+            required
               style={style.control}
               type="password"
               placeholder="Password"
+              pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
             />
-            <Form.Label className="mt-3">Sex</Form.Label>
+            <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
+            <Form.Control.Feedback type="invalid"> Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters</Form.Control.Feedback>
+            </Form.Group>
+            <Form.Group>
+            <Form.Label className="mt-3">Gender</Form.Label>
             {["checkbox"].map((type) => (
               <div className="mb-3">
                 <Form.Check
@@ -62,12 +96,19 @@ const SignUp = () => {
                 />
               </div>
             ))}
+            </Form.Group>
+            <Form.Group>
             <Form.Label className="mt-3">Phone Number</Form.Label>
             <Form.Control
+            required
               style={style.control}
               type="phone"
               placeholder="Enter your Phone Number"
             />
+            <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
+            <Form.Control.Feedback type="invalid"> Please Provide a Good Phone Number to Reach You.</Form.Control.Feedback>
+            </Form.Group>
+            <Form.Group>
             <Form.Label className="mt-3">Blood Type</Form.Label>
             <div>
               <Form.Check
