@@ -8,13 +8,14 @@ birthdate: String
 firstName: String
 lastName: String
 email: String
+password: String
 gender: String
 phoneNumber: String
 bloodType: String
 DNR: Boolean
 DNI: Boolean
-Allergy: [Allergy]!
-EmergencyContact: [EmergencyContact]!
+Allergy: [Allergy]
+EmergencyContact: [EmergencyContact]
 }
 
 type Provider {

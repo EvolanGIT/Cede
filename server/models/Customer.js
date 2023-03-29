@@ -5,12 +5,10 @@ const Allergy = require("./Allergy");
 const bcrypt = require("bcrypt");
 
 const customerSchema = new Schema({
-  _id: {
-    type: String
-},
+  
   username: {
     type: String,
-    required: true,
+    // required: true,
     unique: true,
   },
   login: [
@@ -27,6 +25,10 @@ const customerSchema = new Schema({
     type: String,
     required: true,
   },
+  password: {
+    type: String,
+    required: true,
+  },
   birthdate: {
     type: Date,
   },
@@ -39,7 +41,7 @@ const customerSchema = new Schema({
   gender: {
     type: String,
     enum: ["Female", "Male"],
-    required: true,
+    // required: true,
   },
   phoneNumber: {
     type: String,
@@ -51,7 +53,7 @@ const customerSchema = new Schema({
   },
   bloodType: {
     type: String,
-    required: true,
+    // required: true,
     enum: {
       values: ["A+", "A-", "B+", "B-", "O+", "O-", "AB+", "AB-"],
       message:
@@ -78,6 +80,19 @@ const customerSchema = new Schema({
   ],
 });
 
+customerSchema.pre('save', async function (next) {
+  if (this.isNew || this.isModified('password')) {
+    const saltRounds = 10;
+    this.password = await bcrypt.hash(this.password, saltRounds);
+  }
+
+  next();
+});
+
+// custom method to compare and validate password for logging in
+customerSchema.methods.isCorrectPassword = async function (password) {
+  return bcrypt.compare(password, this.password);
+};
 const Customer = model("Customer", customerSchema);
 
 module.exports = Customer;
