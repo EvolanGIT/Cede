@@ -14,7 +14,6 @@ const NavBar = ({ currentPage, handlePageChange }) => {
         >
           C.E.D.E
         </Navbar.Brand>
-        /Navbar.Brand
         <Nav className="me-auto">
           <Nav.Link
             href="#signUp"
