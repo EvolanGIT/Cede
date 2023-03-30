@@ -7,19 +7,19 @@ import Container from "react-bootstrap/Container";
 import Card from "react-bootstrap/Card";
 //creating a comment
 import { useMutation } from "@apollo/client";
-import { ADD_CUSTOMER } from "../../utils/mutations";
+import { ADD_CUSTOMER_NEW } from "../../utils/mutations";
 import Auth from "../../utils/auth";
 
 const SignUp = () => {
   const style = {
     control: { width: "25rem" },
   };
-  const [customerData, setCustomer] = useState({firstName: "", lastName: "", email: "", password: ""});
+  const [customerData, setCustomer] = useState({firstName: "", lastName: "", email: "", password: "", gender: "", phoneNumber:"", bloodType: "", dnr: true, dni: true});
   const [validated, setValidated] = useState(false);
   const [gender, setGender] = useState("");
   const [bloodType, setBlodType] = useState("");
   const [doNotResuscitate, setDoNotResuscitate] = useState("");
-  const [addCustomer]= useMutation(ADD_CUSTOMER);
+  const [addCustomer]= useMutation(ADD_CUSTOMER_NEW);
 
 
 
@@ -70,7 +70,7 @@ const SignUp = () => {
             <Form.Control
               required
               style={style.control}
-              type="text"
+              type="phone"
               name= "lastName"
               onChange={inputChange}
               value= {customerData.lastName}
@@ -116,7 +116,7 @@ const SignUp = () => {
               letter, and at least 8 or more characters
             </Form.Control.Feedback>
           </Form.Group>
-          {/* <Form.Group className="mx-4 text-start">
+          <Form.Group className="mx-4 text-start">
             <Form.Label className="mt-3">Gender</Form.Label>
             {["checkbox"].map((type) => (
               <div className="mb-3">
@@ -124,8 +124,10 @@ const SignUp = () => {
                   type={type}
                   id={`Male-${type}`}
                   label="Male"
+                  name="genderM"
                   checked={gender === "Male"}
                   onChange={() => setGender("Male")}
+                  value= {customerData.gender}
                 />
                 <Form.Check
                   type={type}
@@ -133,6 +135,8 @@ const SignUp = () => {
                   id={`Female-${type}`}
                   checked={gender === "Female"}
                   onChange={() => setGender("Female")}
+                  value= {customerData.gender}
+                  name="genderF"
                 />
               </div>
             ))}
@@ -140,9 +144,12 @@ const SignUp = () => {
           <Form.Group className="mx-4 text-start">
             <Form.Label className="mt-3">Phone Number</Form.Label>
             <Form.Control
-              required
               style={style.control}
+              required
               type="phone"
+              name= "phoneNumber"
+              onChange={inputChange}
+              value= {customerData.phoneNumber}
               placeholder="Enter your Phone Number"
             />
             <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
@@ -161,6 +168,7 @@ const SignUp = () => {
                 id="bloodTypeApos"
                 checked={bloodType === "A+"}
                 onChange={() => setBlodType("A+")}
+                value={customerData.bloodType}
               />
               <Form.Check
                 inline
@@ -170,6 +178,7 @@ const SignUp = () => {
                 id="bloodTypeAneg"
                 checked={bloodType === "A-"}
                 onChange={() => setBlodType("A-")}
+                value={customerData.bloodType}
               />
               <br />
               <Form.Check
@@ -180,6 +189,7 @@ const SignUp = () => {
                 id="bloodTypeBpos"
                 checked={bloodType === "B+"}
                 onChange={() => setBlodType("B+")}
+                value={customerData.bloodType}
               />
               <Form.Check
                 inline
@@ -189,6 +199,7 @@ const SignUp = () => {
                 id="bloodTypeBneg"
                 checked={bloodType === "B-"}
                 onChange={() => setBlodType("B-")}
+                value={customerData.bloodType}
               />
               <br />
               <Form.Check
@@ -199,6 +210,7 @@ const SignUp = () => {
                 id="bloodTypeOpos"
                 checked={bloodType === "O+"}
                 onChange={() => setBlodType("O+")}
+                value={customerData.bloodType}
               />
               <Form.Check
                 inline
@@ -208,6 +220,7 @@ const SignUp = () => {
                 id="bloodTypeOneg"
                 checked={bloodType === "O-"}
                 onChange={() => setBlodType("O-")}
+                value={customerData.bloodType}
               />
               <br />
               <Form.Check
@@ -218,6 +231,7 @@ const SignUp = () => {
                 id="bloodTypeABpos"
                 checked={bloodType === "AB+"}
                 onChange={() => setBlodType("AB+")}
+                value={customerData.bloodType}
               />
               <Form.Check
                 inline
@@ -227,6 +241,7 @@ const SignUp = () => {
                 id="bloodTypeABneg"
                 checked={bloodType === "AB-"}
                 onChange={() => setBlodType("AB-")}
+                value={customerData.bloodType}
               />
             </div>
             <Form.Label className="mt-3">
@@ -243,6 +258,7 @@ const SignUp = () => {
                 id="resuscitateNO"
                 checked={doNotResuscitate === "Yes"}
                 onChange={() => setDoNotResuscitate("Yes")}
+                value={customerData.dnr}
               />
               <Form.Check
                 inline
@@ -252,6 +268,7 @@ const SignUp = () => {
                 id="resuscitateYES"
                 checked={doNotResuscitate === "No"}
                 onChange={() => setDoNotResuscitate("No")}
+                value={customerData.dni}
               />
             </div>
             <br />
@@ -262,7 +279,7 @@ const SignUp = () => {
           <Form.Group
             className="mx-4 m-3 text-start"
             controlId="formPasswordSignUp"
-          ></Form.Group> */}
+          ></Form.Group>
           <Button variant="dark" type="submit" className="mb-3">
             Sign-Up
           </Button>

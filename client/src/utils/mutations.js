@@ -21,3 +21,11 @@ mutation addCustomer($firstName: String!, $lastName: String!, $email: String!, $
     }
 }
 `;
+
+export const ADD_CUSTOMER_NEW = gql`
+mutation AddCustomer($firstName: String!, $lastName: String!, $email: String!, $password: String!, $birthdate: String!, $gender: String!, $phoneNumber: String!, $bloodType: String!, $dnr: Boolean!, $dni: Boolean!) {
+    addCustomer(firstName: $firstName, lastName: $lastName, email: $email, password: $password, birthdate: $birthdate, gender: $gender, phoneNumber: $phoneNumber, bloodType: $bloodType, DNR: $dnr, DNI: $dni) {
+      token
+    }
+  }
+`
