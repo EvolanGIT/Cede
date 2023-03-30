@@ -55,12 +55,20 @@ me: Customer
 }
 
 type Mutation {
+
 addCustomer(
     firstName: String!
     lastName: String!
     email: String!
     password: String!
+    birthdate: String!
+    gender: String!
+    phoneNumber: String!
+    bloodType: String!
+    DNR: Boolean!
+    DNI: Boolean!
 ): Auth
+
 login(email: String!, password: String!): Auth
 
 updateFirstName(customerId: ID!, firstName: String!): Customer

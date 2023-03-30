@@ -27,8 +27,8 @@ const resolvers = {
     },
 
     Mutation: {
-        addCustomer: async (parent, { firstName, lastName, email, password }) => {
-            const customer = await Customer.create({ firstName, lastName, email, password });
+        addCustomer: async (parent, { firstName, lastName, email, password, birthdate, gender, phoneNumber, bloodType, dnr, dni }) => {
+            const customer = await Customer.create({ firstName, lastName, email, password, birthdate, gender, phoneNumber, bloodType, dnr, dni });
             const token = signToken(customer);
         
             return { token, customer };

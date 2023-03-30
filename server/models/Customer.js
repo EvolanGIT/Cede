@@ -30,7 +30,7 @@ const customerSchema = new Schema({
     required: true,
   },
   birthdate: {
-    type: Date,
+    type: String,
   },
   email: {
     type: String,
@@ -46,10 +46,10 @@ const customerSchema = new Schema({
   phoneNumber: {
     type: String,
     //This Regex phone number regex works for the formats (123) 456-7890 or 123-456-7890.
-    match: [
-      /^(\()?\d{3}(\))?(-|\s)?\d{3}(-|\s)\d{4}$/,
-      "Must enter a valid format for phone number",
-    ],
+    // match: [
+    //   /^(\()?\d{3}(\))?(-|\s)?\d{3}(-|\s)\d{4}$/,
+    //   "Must enter a valid format for phone number",
+    // ],
   },
   bloodType: {
     type: String,
@@ -78,6 +78,12 @@ const customerSchema = new Schema({
       ref: "Allergy",
     },
   ],
+  //TEST THIS OUT!
+  accountType: {
+    type: String,
+    enum: ["Customer", "Provider"],
+    default: "Customer"
+  },
 });
 
 customerSchema.pre('save', async function (next) {
