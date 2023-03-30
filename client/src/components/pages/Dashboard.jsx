@@ -45,7 +45,6 @@ function Dashboard(props) {
           alignContent: "center",
           backgroundColor: "#0e385c",
           color: "#959696",
-          // width: "25rem",
         }}
       >
         <div style={{ backgroundColor: "#0e385c", color: "#959696" }}>
@@ -68,7 +67,7 @@ function Dashboard(props) {
             <p>Do not Intubate: {customer.doNotIntubate ? "Yes" : "No"}</p>
 
             <h3>Allergies</h3>
-            <ul style={{ listStyle: "none", pl: "0px" }}>
+            <ul class="nopadding" style={{ listStyle: "none" }}>
               {customer.allergies.map((allergy, index) => (
                 <li key={index}>{allergy}</li>
               ))}
