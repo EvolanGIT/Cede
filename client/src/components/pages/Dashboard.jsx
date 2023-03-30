@@ -91,7 +91,13 @@ function Dashboard(props) {
         </div>
       </Card>
       <Stack direction="vertical" gap={6}>
-        <Button variant="info" type="submit" size="lg" className="mb-3 w-50">
+        <Button
+          onClick={console.log("Hello World")}
+          variant="info"
+          type="submit"
+          size="lg"
+          className="mb-3 w-50"
+        >
           Update Profile
         </Button>
         <br></br>
