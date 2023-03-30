@@ -8,6 +8,8 @@ import {
   Stack,
 } from "react-bootstrap";
 import React, { useState } from "react";
+import { EDIT_CUSTOMER } from "../../utils/mutations";
+import { useMutation } from "@apollo/client";
 
 // render(CustomerInfo);
 function Dashboard(props) {
@@ -36,6 +38,7 @@ function Dashboard(props) {
       },
     ],
   };
+  const [editCustomer] = useMutation(EDIT_CUSTOMER);
   // This renders the patient information page
   return (
     <Container>
@@ -78,7 +81,9 @@ function Dashboard(props) {
                 <li key={index}>
                   First Name: {contact.firstName},<br></br>
                   Last Name: {contact.lastName},<br></br>
-                  Phone Number: {contact.phoneNumber}
+                  <div style={{ color: "lime" }}>
+                    Phone Number: {contact.phoneNumber}
+                  </div>
                 </li>
               ))}
             </ul>

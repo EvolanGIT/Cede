@@ -11,22 +11,23 @@ import { ADD_CUSTOMER } from "../../utils/mutations";
 import Auth from "../../utils/auth";
 
 const SignUp = () => {
-  const style = {
-    control: { width: "25rem" },
-  };
-  const [customerData, setCustomer] = useState({firstName: "", lastName: "", email: "", password: ""});
+  const style = { control: { width: "25rem" } };
+  const [customerData, setCustomer] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+    password: "",
+  });
   const [validated, setValidated] = useState(false);
   const [gender, setGender] = useState("");
   const [bloodType, setBlodType] = useState("");
   const [doNotResuscitate, setDoNotResuscitate] = useState("");
-  const [addCustomer]= useMutation(ADD_CUSTOMER);
+  const [addCustomer] = useMutation(ADD_CUSTOMER);
 
-
-
-  const inputChange= (event) => {
-    const {name, value}= event.target 
-    setCustomer({...customerData, [name]: value})
-    }
+  const inputChange = (event) => {
+    const { name, value } = event.target;
+    setCustomer({ ...customerData, [name]: value });
+  };
 
   const handleSubmit = async (event) => {
     const form = event.currentTarget;
@@ -36,9 +37,11 @@ const SignUp = () => {
     }
     console.log(customerData);
     try {
-      const {data}= await addCustomer({variables:{...customerData}})
-      Auth.login(data.addCustomer.token)
-    } catch (err){console.error(err)}
+      const { data } = await addCustomer({ variables: { ...customerData } });
+      Auth.login(data.addCustomer.token);
+    } catch (err) {
+      console.error(err);
+    }
     setValidated(true);
   };
 
@@ -55,9 +58,9 @@ const SignUp = () => {
               style={style.control}
               required
               type="text"
-              name= "firstName"
+              name="firstName"
               onChange={inputChange}
-              value= {customerData.firstName}
+              value={customerData.firstName}
               placeholder="Enter first name"
             />
             <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
@@ -71,9 +74,9 @@ const SignUp = () => {
               required
               style={style.control}
               type="text"
-              name= "lastName"
+              name="lastName"
               onChange={inputChange}
-              value= {customerData.lastName}
+              value={customerData.lastName}
               placeholder="Enter last name"
             />
             <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
@@ -87,9 +90,9 @@ const SignUp = () => {
               required
               style={style.control}
               type="email"
-              name= "email"
+              name="email"
               onChange={inputChange}
-              value= {customerData.email}
+              value={customerData.email}
               placeholder="Enter email"
               pattern="^(.+)@(.+)$"
             />
@@ -106,7 +109,7 @@ const SignUp = () => {
               type="password"
               name="password"
               onChange={inputChange}
-              value= {customerData.password}
+              value={customerData.password}
               placeholder="Password"
               pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
             />
