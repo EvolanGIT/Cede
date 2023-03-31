@@ -25,8 +25,7 @@ const Home = () => {
             }}
           >
             <Card.Body>
-              <Card.Text>
-                {" "}
+              <Card.Text>                
                 In an emergency situation, time is of paramount importance. CEDE
                 will keep your pertinent information at the ready for you and
                 your provider. Join us today!

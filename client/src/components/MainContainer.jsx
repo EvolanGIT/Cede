@@ -26,7 +26,9 @@ const MainContainer = () => {
       backgroundImage: `url("https://wallpaperaccess.com/full/4178252.jpg")`,
       backgroundSize: '100%',
       backgroundRepeat: 'repeat-y',
-      height: '100vw'
+      height: 'auto',
+      width: "100%",
+      objectFit:"scale-down"
       
       
 
