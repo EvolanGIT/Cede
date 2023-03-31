@@ -1,6 +1,5 @@
 import {Container, Card, Button, Col, Row} from "react-bootstrap";
 
-
 const Home = () => {
   return (
     <Container className="mt-3 justify-content-right" align="center">
@@ -9,7 +8,7 @@ const Home = () => {
         <Col></Col>
         <Col><h1 className="" style={{marginTop: "1rem",color: '#959696'}}>Take Control of Your information</h1></Col>
         <Col>
-        
+      
         </Col>
       </Row>
       <Row>

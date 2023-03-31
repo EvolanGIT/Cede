@@ -18,7 +18,17 @@ const resolvers = {
     Customer: async (_, { customerId }) => {
       return Customer.findOne(customerId);
     },
-},
+
+    me: async (parent, args, context) => {
+      if (context.user) {
+        return Customer.findOne({ _id: context.user._id });
+      }
+      throw new AuthenticationError("You need to be logged in!");
+    },
+
+    // Provider: async () => {
+    // }
+  },
 
   Mutation: {
     addCustomer: async (
@@ -59,7 +69,7 @@ const resolvers = {
         throw new AuthenticationError("No customer with this email found!");
       }
 
-      const correctPw = await customer.isCorrectPassword(password);
+      const correctPw = await Customer.isCorrectPassword(password);
 
       if (!correctPw) {
         throw new AuthenticationError("Incorrect password!");

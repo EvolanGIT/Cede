@@ -15,28 +15,20 @@ const SignUp = () => {
     control: { width: "25rem" },
   };
 
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
-  const [birthdate, setBirthdate] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [phoneNumber, setPhoneNumber] = useState("");
-  const [doNotIntubate, setDoNotIntubate] = useState("");
+  const [ firstName, setFirstName] = useState("");
+  const [ lastName, setLastName] = useState("");
+  const [ birthdate, setBirthdate] = useState("");
+  const [ email, setEmail] = useState("");
+  const [ password, setPassword] = useState("");
+  const [ phoneNumber, setPhoneNumber] = useState("");
+  const [ doNotIntubate, setDoNotIntubate] = useState("");
   const [validated, setValidated] = useState(false);
   const [gender, setGender] = useState("");
-  const [bloodType, setBlodType] = useState("");
-  const [doNotResuscitate, setDoNotResuscitate] = useState("");
-  const [addCustomer] = useMutation(ADD_CUSTOMER);
-
-  const inputChange = (event) => {
-    const { name, value } = event.target;
-    setCustomer({ ...customerData, [name]: value });
-  };
   const [bloodType, setBloodType] = useState("");
   const [doNotResuscitate, setDoNotResuscitate] = useState(false);
   const [addCustomer] = useMutation(ADD_CUSTOMER_NEW);
   const bloodTypes = ["A+", "A-", "B+", "B-", "O+", "O-", "AB+", "AB-"];
-  const genders = ["Male", "Female", "Undisclosed"];
+  const genders = ["Male", "Female", "Undisclosed"]
 
   const handleSubmit = async (event) => {
     const customerData = {
@@ -49,9 +41,9 @@ const SignUp = () => {
       doNotIntubate,
       doNotResuscitate,
       gender,
-      bloodType,
-    };
-
+      bloodType
+    }
+    
     const form = event.currentTarget;
     if (form.checkValidity() === false) {
       event.preventDefault();
@@ -81,10 +73,7 @@ const SignUp = () => {
               required
               type="text"
               name="firstName"
-              onChange={inputChange}
-              value={customerData.firstName}
-              name="firstName"
-              onChange={(e) => setFirstName(e.target.value)}
+              onChange={(e)=>setFirstName(e.target.value)}
               value={firstName}
               placeholder="Enter first name"
             />
@@ -98,13 +87,9 @@ const SignUp = () => {
             <Form.Control
               required
               style={style.control}
-              type="text"
-              name="lastName"
-              onChange={inputChange}
-              value={customerData.lastName}
               type="phone"
               name="lastName"
-              onChange={(e) => setLastName(e.target.value)}
+              onChange={(e)=>setLastName(e.target.value)}
               value={lastName}
               placeholder="Enter last name"
             />
@@ -114,7 +99,7 @@ const SignUp = () => {
               // style={style.control}
               type="text"
               name="birthdate"
-              onChange={(e) => setBirthdate(e.target.value)}
+              onChange={(e)=>setBirthdate(e.target.value)}
               value={birthdate}
               placeholder="Enter your DoB"
             />
@@ -130,10 +115,7 @@ const SignUp = () => {
               style={style.control}
               type="email"
               name="email"
-              onChange={inputChange}
-              value={customerData.email}
-              name="email"
-              onChange={(e) => setEmail(e.target.value)}
+              onChange={(e)=>setEmail(e.target.value)}
               value={email}
               placeholder="Enter email"
               pattern="^(.+)@(.+)$"
@@ -150,9 +132,7 @@ const SignUp = () => {
               style={style.control}
               type="password"
               name="password"
-              onChange={inputChange}
-              value={customerData.password}
-              onChange={(e) => setPassword(e.target.value)}
+              onChange={(e)=>setPassword(e.target.value)}
               value={password}
               placeholder="Password"
               pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
@@ -186,7 +166,7 @@ const SignUp = () => {
               required
               type="phone"
               name="phoneNumber"
-              onChange={(e) => setPhoneNumber(e.target.value)}
+              onChange={(e)=>setPhoneNumber(e.target.value)}
               value={phoneNumber}
               placeholder="Enter your Phone Number"
             />
@@ -204,7 +184,7 @@ const SignUp = () => {
                   id={`${type}checkbox`}
                   label={type}
                   name={type}
-                  checked={bloodType === type}
+                  checked={bloodType === type }
                   onChange={() => setBloodType(type)}
                   value={type}
                 />
@@ -223,7 +203,7 @@ const SignUp = () => {
                 type="checkbox"
                 id="resuscitateNO"
                 checked={doNotResuscitate === true}
-                onChange={() => setDoNotResuscitate(true)}
+                onChange={()=>setDoNotResuscitate(true)}
                 value={true}
               />
               <Form.Check
@@ -233,7 +213,7 @@ const SignUp = () => {
                 type="checkbox"
                 id="resuscitateYES"
                 checked={doNotResuscitate === false}
-                onChange={() => setDoNotResuscitate(false)}
+                onChange={()=>setDoNotResuscitate(false)}
                 value={false}
               />
             </div>
@@ -251,7 +231,7 @@ const SignUp = () => {
                 type="checkbox"
                 id="resuscitateNO"
                 checked={doNotIntubate === true}
-                onChange={() => setDoNotIntubate(true)}
+                onChange={()=>setDoNotIntubate(true)}
                 value={true}
               />
               <Form.Check
@@ -261,11 +241,11 @@ const SignUp = () => {
                 type="checkbox"
                 id="resuscitateYES"
                 checked={doNotIntubate === false}
-                onChange={() => setDoNotIntubate(false)}
+                onChange={()=>setDoNotIntubate(false)}
                 value={false}
               />
             </div>
-            <br />
+              <br/>
             <Form.Text className="text-muted">
               We'll never share your email with anyone else.
             </Form.Text>

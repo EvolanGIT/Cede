@@ -11,51 +11,32 @@ export const LOGIN = gql`
   }
 `;
 
-export const ADD_CUSTOMER = gql`
-  mutation addCustomer(
+export const ADD_CUSTOMER_NEW = gql`
+  mutation AddCustomer(
     $firstName: String!
     $lastName: String!
     $email: String!
     $password: String!
+    $gender: String!
+    $phoneNumber: String!
+    $bloodType: String!
+    $doNotResuscitate: Boolean!
+    $doNotIntubate: Boolean!
+    $birthdate: String
   ) {
     addCustomer(
       firstName: $firstName
       lastName: $lastName
       email: $email
       password: $password
+      gender: $gender
+      phoneNumber: $phoneNumber
+      bloodType: $bloodType
+      doNotResuscitate: $doNotResuscitate
+      doNotIntubate: $doNotIntubate
+      birthdate: $birthdate
     ) {
       token
-      Customer {
-        _id
-        firstName
-        lastName
-        email
-        password
-      }
-    }
-  }
-`;
-
-export const EDIT_CUSTOMER = gql`
-  mutation editCustomer(
-    $firstName: String!
-    $lastName: String!
-    $email: String!
-    $password: String!
-  ) {
-    editCustomer(
-      firstName: $firstName
-      lastName: $lastName
-      email: $email
-      password: $password
-    ) {
-      token
-      Customer {
-        firstName
-        lastName
-        email
-        password
-      }
     }
   }
 `;
