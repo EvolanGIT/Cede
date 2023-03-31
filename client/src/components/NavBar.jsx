@@ -49,6 +49,15 @@ const NavBar = ({ currentPage, handlePageChange }) => {
           >
             Contact Us
           </Nav.Link>
+          <Nav.Link
+            href="#Provider"
+            onClick={() => handlePageChange("Provider")}
+            className={
+              currentPage === "Provider" ? "nav-link active" : "nav-link"
+            }
+          >
+            Provider
+          </Nav.Link>
         </Nav>
       </Container>
     </Navbar>
