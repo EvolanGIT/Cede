@@ -40,7 +40,7 @@ const resolvers = {
                 throw new AuthenticationError('No customer with this email found!');
             }
     
-            const correctPw = await Customer.isCorrectPassword(password);
+            const correctPw = await customer.isCorrectPassword(password);
     
             if (!correctPw) {
                 throw new AuthenticationError('Incorrect password!');
