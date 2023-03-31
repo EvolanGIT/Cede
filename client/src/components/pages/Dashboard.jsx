@@ -9,15 +9,38 @@ import {
 } from "react-bootstrap";
 import React, { useState } from "react";
 import { EDIT_CUSTOMER } from "../../utils/mutations";
-import { useMutation } from "@apollo/client";
+import { gql, useQuery, useMutation } from "@apollo/client";
 import Edit from "./editInfo";
 
-// render(CustomerInfo);
 function Dashboard(props) {
   //  Grab id from localstorage
+  localStorage.getItem(customer.id);
   //grab query to find One customer and pass id using useQuery hook
+  const FIND_CUSTOMER = gql`
+    query getCustomer {
+      customer {
+        id
+        firstName
+        lastName
+        password
+        birthday
+        email
+        gender
+        phoneNumber
+        bloodType
+        DNR
+        DNI
+        emergencyContacts
+        allergy
+      }
+    }
+  `;
   //destructure loading and data from the hook
+  const { data, loading, error } = useQuery(FIND_CUSTOMER);
   //create ternary where loading if true shows loading screen else show data.
+  if (loading) return "Loading...";
+  if (error) return <pre>{error.message}</pre>;
+
   const customer = data?.customer;
   // {
   //   firstName: "Ben",
