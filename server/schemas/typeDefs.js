@@ -49,7 +49,7 @@ Customer: Customer
 }
 
 type Query {
-Customer(customer: ID!): Customer
+Customer(customerId: ID!): Customer
 customers: [Customer]!
 me: Customer
 }
