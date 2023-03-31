@@ -19,40 +19,6 @@ const resolvers = {
       return Customer.findOne(customerId);
     },
 },
-    Mutation: {
-        addCustomer: async (parent, { firstName, lastName, email, password, birthdate, gender, phoneNumber, bloodType, dnr, dni }) => {
-            const customer = await Customer.create({ firstName, lastName, email, password, birthdate, gender, phoneNumber, bloodType, dnr, dni });
-            const token = signToken(customer);
-        
-            return { token, customer };
-        },
-        login: async (parent, { email, password }) => {
-            const customer = await Customer.findOne({ email });
-    
-            if (!customer) {
-                throw new AuthenticationError('No customer with this email found!');
-            }
-    
-            const correctPw = await customer.isCorrectPassword(password);
-    
-            if (!correctPw) {
-                throw new AuthenticationError('Incorrect password!');
-            }
-    
-            const token = signToken(customer);
-            return { token, customer };
-        },
-
-    me: async (parent, args, context) => {
-      if (context.user) {
-        return Customer.findOne({ _id: context.user._id });
-      }
-      throw new AuthenticationError("You need to be logged in!");
-    },
-
-    // Provider: async () => {
-    // }
-  },
 
   Mutation: {
     addCustomer: async (
@@ -93,7 +59,7 @@ const resolvers = {
         throw new AuthenticationError("No customer with this email found!");
       }
 
-      const correctPw = await Customer.isCorrectPassword(password);
+      const correctPw = await customer.isCorrectPassword(password);
 
       if (!correctPw) {
         throw new AuthenticationError("Incorrect password!");
