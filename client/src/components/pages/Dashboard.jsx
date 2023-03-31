@@ -14,11 +14,11 @@ import Edit from "./editInfo";
 
 function Dashboard(props) {
   //  Grab id from localstorage
-  localStorage.getItem(customer.id);
+  localStorage.getItem(id_token.value);
   //grab query to find One customer and pass id using useQuery hook
   const FIND_CUSTOMER = gql`
     query getCustomer {
-      customer {
+      customers {
         id
         firstName
         lastName

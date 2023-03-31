@@ -24,14 +24,6 @@ const SignUp = () => {
   const [doNotIntubate, setDoNotIntubate] = useState("");
   const [validated, setValidated] = useState(false);
   const [gender, setGender] = useState("");
-  const [bloodType, setBlodType] = useState("");
-  const [doNotResuscitate, setDoNotResuscitate] = useState("");
-  const [addCustomer] = useMutation(ADD_CUSTOMER);
-
-  const inputChange = (event) => {
-    const { name, value } = event.target;
-    setCustomer({ ...customerData, [name]: value });
-  };
   const [bloodType, setBloodType] = useState("");
   const [doNotResuscitate, setDoNotResuscitate] = useState(false);
   const [addCustomer] = useMutation(ADD_CUSTOMER_NEW);
@@ -81,9 +73,6 @@ const SignUp = () => {
               required
               type="text"
               name="firstName"
-              onChange={inputChange}
-              value={customerData.firstName}
-              name="firstName"
               onChange={(e) => setFirstName(e.target.value)}
               value={firstName}
               placeholder="Enter first name"
@@ -98,20 +87,18 @@ const SignUp = () => {
             <Form.Control
               required
               style={style.control}
-              type="text"
-              name="lastName"
-              onChange={inputChange}
-              value={customerData.lastName}
               type="phone"
               name="lastName"
               onChange={(e) => setLastName(e.target.value)}
               value={lastName}
               placeholder="Enter last name"
             />
+          </Form.Group>
+          <Form.Group className="mx-4 text-start">
             <Form.Label className="mt-3">Date of Birth</Form.Label>
             <Form.Control
               required
-              // style={style.control}
+              style={style.control}
               type="text"
               name="birthdate"
               onChange={(e) => setBirthdate(e.target.value)}
@@ -120,7 +107,7 @@ const SignUp = () => {
             />
             <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
             <Form.Control.Feedback type="invalid">
-              Please Enter A Last Name.
+              Please Enter Date of Birth
             </Form.Control.Feedback>
           </Form.Group>
           <Form.Group className="mx-4 text-start">
@@ -129,9 +116,6 @@ const SignUp = () => {
               required
               style={style.control}
               type="email"
-              name="email"
-              onChange={inputChange}
-              value={customerData.email}
               name="email"
               onChange={(e) => setEmail(e.target.value)}
               value={email}
@@ -150,8 +134,6 @@ const SignUp = () => {
               style={style.control}
               type="password"
               name="password"
-              onChange={inputChange}
-              value={customerData.password}
               onChange={(e) => setPassword(e.target.value)}
               value={password}
               placeholder="Password"
