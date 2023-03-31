@@ -8,18 +8,15 @@ import {
   Stack,
 } from "react-bootstrap";
 import React, { useState } from "react";
-import { EDIT_CUSTOMER } from "../../utils/mutations";
 import { gql, useQuery, useMutation } from "@apollo/client";
-import Edit from "./editInfo";
 
 function Dashboard(props) {
   //  Grab id from localstorage
-  localStorage.getItem(id_token.value);
+  //localStorage.getItem(id_token);
   //grab query to find One customer and pass id using useQuery hook
   const FIND_CUSTOMER = gql`
-    query getCustomer {
+      {
       customers {
-        id
         firstName
         lastName
         password
@@ -121,7 +118,7 @@ function Dashboard(props) {
       <Stack direction="vertical" gap={6}>
         <Button
           href="#editInfo"
-          onClick={Edit}
+          // onClick={Edit}
           variant="info"
           type="submit"
           size="lg"

@@ -103,7 +103,7 @@ const SignUp = () => {
               name="birthdate"
               onChange={(e) => setBirthdate(e.target.value)}
               value={birthdate}
-              placeholder="Enter your DoB"
+              placeholder="MM/DD/YYYY"
             />
             <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
             <Form.Control.Feedback type="invalid">
