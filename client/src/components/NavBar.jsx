@@ -32,6 +32,15 @@ const NavBar = ({ currentPage, handlePageChange }) => {
             Login
           </Nav.Link>
           <Nav.Link
+            href="#dashboard"
+            onClick={() => handlePageChange("Dashboard")}
+            className={
+              currentPage === "Dashboard" ? "nav-link disabled" : "nav-link"
+            }
+          >
+            Dashboard
+          </Nav.Link>
+          <Nav.Link
             href="#contactUs"
             onClick={() => handlePageChange("ContactUs")}
             className={
