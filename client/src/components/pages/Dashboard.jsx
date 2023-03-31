@@ -9,13 +9,17 @@ import {
 } from "react-bootstrap";
 import React, { useState } from "react";
 import { gql, useQuery, useMutation } from "@apollo/client";
+import AuthService from "../../utils/auth";
 
 function Dashboard(props) {
   //  Grab id from localstorage
-  //localStorage.getItem(id_token);
+  // localStorage.getItem(id);
+  
   //grab query to find One customer and pass id using useQuery hook
   const FIND_CUSTOMER = gql`
-      {
+     query GetCustomer { 
+      # viewer{
+      # id
       customers {
         firstName
         lastName
@@ -31,14 +35,17 @@ function Dashboard(props) {
         allergy
       }
     }
+    #  }
   `;
+   
   //destructure loading and data from the hook
   const { data, loading, error } = useQuery(FIND_CUSTOMER);
+ 
   //create ternary where loading if true shows loading screen else show data.
   if (loading) return "Loading...";
-  if (error) return <pre>{error.message}</pre>;
-
+  if (error) return <h1 style={{ color: "Red" }}>{error.message}</h1>;
   const customer = data?.customer;
+ 
   // {
   //   firstName: "Ben",
   //   lastName: "Salem",
@@ -80,7 +87,7 @@ function Dashboard(props) {
           <div>
             <h2>Personal Information</h2>
 
-            <p>First Name: {customer.firstName}</p>
+            <p>First Name: {data.customer.firstName}</p>
             <p>Last Name: {customer.lastName}</p>
             <p>DoB: {customer.dob}</p>
             <p>Email: {customer.email}</p>
