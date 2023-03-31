@@ -10,35 +10,40 @@ import {
 import React, { useState } from "react";
 import { EDIT_CUSTOMER } from "../../utils/mutations";
 import { useMutation } from "@apollo/client";
+import Edit from "./editInfo";
 
 // render(CustomerInfo);
 function Dashboard(props) {
-  // Temporary JSON to render informtin for now.
-  const customer = {
-    firstName: "Ben",
-    lastName: "Salem",
-    dob: "01/01/1980",
-    email: "ben@mail.com",
-    gender: "Male",
-    phoneNumber: "123-456-7890",
-    bloodType: "AB+",
-    doNotResuscitate: false,
-    doNotIntubate: true,
-    allergies: ["Peanuts", "Penicillin"],
-    emergencyContacts: [
-      {
-        firstName: "Some",
-        lastName: "Body",
-        phoneNumber: "234-567-8901",
-      },
-      {
-        firstName: "Bob",
-        lastName: "Salem",
-        phoneNumber: "345-678-9012",
-      },
-    ],
-  };
-  const [editCustomer] = useMutation(EDIT_CUSTOMER);
+  //  Grab id from localstorage
+  //grab query to find One customer and pass id using useQuery hook
+  //destructure loading and data from the hook
+  //create ternary where loading if true shows loading screen else show data.
+  const customer = data?.customer;
+  // {
+  //   firstName: "Ben",
+  //   lastName: "Salem",
+  //   dob: "01/01/1980",
+  //   email: "ben@mail.com",
+  //   gender: "Male",
+  //   phoneNumber: "123-456-7890",
+  //   bloodType: "AB+",
+  //   doNotResuscitate: false,
+  //   doNotIntubate: true,
+  //   allergies: ["Peanuts", "Penicillin"],
+  //   emergencyContacts: [
+  //     {
+  //       firstName: "Some",
+  //       lastName: "Body",
+  //       phoneNumber: "234-567-8901",
+  //     },
+  //     {
+  //       firstName: "Bob",
+  //       lastName: "Salem",
+  //       phoneNumber: "345-678-9012",
+  //     },
+  //   ],
+  // };
+  // const [editCustomer] = useMutation(EDIT_CUSTOMER);
   // This renders the patient information page
   return (
     <Container>
@@ -92,7 +97,8 @@ function Dashboard(props) {
       </Card>
       <Stack direction="vertical" gap={6}>
         <Button
-          onClick={console.log("Hello World")}
+          href="#editInfo"
+          onClick={Edit}
           variant="info"
           type="submit"
           size="lg"
