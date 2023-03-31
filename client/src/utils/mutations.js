@@ -7,6 +7,8 @@ export const LOGIN = gql`
       Customer {
         _id
       }
+        email
+        }
     }
   }
 `;
@@ -40,5 +42,3 @@ export const ADD_CUSTOMER_NEW = gql`
     }
   }
 `;
-
-

@@ -1,7 +1,7 @@
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
-
+import Logo from "../assets/images/cede_logofull-noBG.png"
 const NavBar = ({ currentPage, handlePageChange }) => {
   return (
     // took out bg dark
@@ -12,7 +12,7 @@ const NavBar = ({ currentPage, handlePageChange }) => {
           onClick={() => handlePageChange("Home")}
           className={currentPage === "Home" ? "nav-link active" : "nav-link"}
         >
-          C.E.D.E
+          <img width="220" className="" src={Logo}/>
         </Navbar.Brand>
         <Nav className="me-auto">
           <Nav.Link
@@ -30,6 +30,15 @@ const NavBar = ({ currentPage, handlePageChange }) => {
             className={currentPage === "Login" ? "nav-link active" : "nav-link"}
           >
             Login
+          </Nav.Link>
+          <Nav.Link
+            href="#dashboard"
+            onClick={() => handlePageChange("Dashboard")}
+            className={
+              currentPage === "Dashboard" ? "nav-link disabled" : "nav-link"
+            }
+          >
+            Dashboard
           </Nav.Link>
           <Nav.Link
             href="#contactUs"
