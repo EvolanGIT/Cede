@@ -2,7 +2,7 @@
   "name": "cede",
   "version": "1.0.0",
   "engines": {
-    "node": "18.x"
+    "node": "16.10.0"
   },
   "description": "Cede is an application created to allow users to have a standardized end-point for their information.\r When the user creates an account and saves their information, the application will create a QR code for the user. This QR code will serve as an end-point for Medical facilities as well as Paramedics to access critical information expediting the patient's care with full access to it's medical history.",
   "main": "index.js",
