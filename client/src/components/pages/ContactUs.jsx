@@ -37,9 +37,10 @@ const ContactUs = () => {
       >
         <Form onSubmit={handlesubmit}>
           <Form.Group className="mx-4 text-start" controlId="formContactUs">
-            <Form.Label className="mt-3">Name</Form.Label>
+            <Form.Label className="mt-3">Full Name</Form.Label>
             <Form.Control
               type="text"
+              name= "fullName"
               placeholder="Enter Name"
               // value={contactFormData.name}
               onChange={handleInputChange}
@@ -50,6 +51,7 @@ const ContactUs = () => {
             <Form.Label className="mt-3">Email</Form.Label>
             <Form.Control
               type="email"
+              name="email"
               placeholder="Enter email"
               // value={contactFormData.email}
               onChange={handleInputChange}
@@ -70,7 +72,7 @@ const ContactUs = () => {
               required
             />
           </Form.Group>
-          <Button variant="dark" type="submit" className="mb-3">
+          <Button variant="dark" type="submit" className="m-3">
             Submit
           </Button>
         </Form>
