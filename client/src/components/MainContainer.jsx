@@ -1,9 +1,10 @@
 import { useState } from "react";
 import SignUp from "./pages/SignUp";
-import Login from "./pages/Login"
+import Login from "./pages/Login";
 import NavBar from "./NavBar";
-import ContactUs from "./pages/ContactUs"
-import Home from './pages/Home'
+import ContactUs from "./pages/ContactUs";
+import Home from "./pages/Home";
+import Dashboard from "./pages/Dashboard";
 
 const MainContainer = () => {
   const [currentPage, setCurrentPage] = useState("Home");
@@ -17,6 +18,9 @@ const MainContainer = () => {
     }
     if (currentPage === "Login") {
       return <Login />;
+    }
+    if (currentPage === "Dashboard") {
+      return <Dashboard />;
     }
     return <ContactUs />;
   };
@@ -38,6 +42,6 @@ const MainContainer = () => {
       {/* Here we are calling the renderPage method which will return a component  */}
       {renderPage()}
     </div>
-  )
+  );
 };
 export default MainContainer;
