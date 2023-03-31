@@ -57,7 +57,7 @@
   ### You can find my repository [HERE](https://github.com/EvolanGIT/Cede)
 
 
-  ### [HERE](N/A) is the link to the deployed application
+  ### [HERE](https://cede-qr-app.herokuapp.com/) is the link to the deployed application
   
 
 
