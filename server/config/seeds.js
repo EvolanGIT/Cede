@@ -9,8 +9,8 @@ connection.once("open", async () => {
 
   //Allergies
   await Allergy.deleteMany({});
-  await EmergencyContact.deleteMany({})
-  await Customer.deleteMany({})
+  await EmergencyContact.deleteMany({});
+  await Customer.deleteMany({});
   await Login.deleteMany({});
 
   const allergies = await Allergy.insertMany([
@@ -67,63 +67,63 @@ connection.once("open", async () => {
 
   await Customer.create([
     {
-      _id: "c001",
       username: "user1",
       firstName: "Yon",
       lastName: "Bermudez",
       birthdate: "<1986-03-02>",
       email: "test@mail.com",
+      password: "Password123",
       gender: "Male",
       phoneNumber: "258-365-7856",
       bloodType: "O-",
       DNR: true,
       DNI: false,
       EmergencyContact: contacts.filter(({ _id }) => {
-        return (_id === "e001" || _id === "e002");
+        return _id === "e001" || _id === "e002";
       }),
       Allergy: allergies.filter(({ _id }) => {
-        return (_id === "a001" || _id === "a002");
+        return _id === "a001" || _id === "a002";
       }),
     },
   ]);
 
   await Customer.create([
     {
-      _id: "c002",
       username: "user2",
       firstName: "Edwin",
       lastName: "Pietrowski",
       birthdate: "<1984-05-27>",
       email: "test2@mail.com",
+      password: "Password123",
       gender: "Male",
       phoneNumber: "471-587-3594",
       bloodType: "O+",
       DNR: false,
       DNI: false,
       EmergencyContact: contacts.filter(({ _id }) => {
-        return (_id === "e003");
+        return _id === "e003";
       }),
       Allergy: allergies.filter(({ _id }) => {
-        return (_id === "a005");
+        return _id === "a005";
       }),
     },
   ]);
 
   await Customer.create([
     {
-      _id: "c003",
       username: "user3",
       firstName: "Alberto",
       lastName: "De Armas",
       birthdate: "<1989-11-13>",
       email: "test3@mail.com",
+      password: "Password123",
       gender: "Male",
       phoneNumber: "980-939-2587",
       bloodType: "O+",
       DNR: false,
       DNI: false,
       EmergencyContact: contacts.filter(({ _id }) => {
-        return (_id === "e004");
+        return _id === "e004";
       }),
       Allergy: [],
     },
