@@ -60,7 +60,7 @@ const SignUp = () => {
   };
 
   return (
-    <Container className="mt-3 justify-content-center" align="center">
+    <Container className="mt-3 justify-content-center flex" align="center">
       <Card
         className="shadow-lg"
         style={{ width: "40rem", backgroundColor: "#0e385c", color: "#959696" }}
