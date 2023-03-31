@@ -61,7 +61,7 @@ addCustomer(
     lastName: String!
     email: String!
     password: String!
-    birthdate: String!
+    birthdate: String
     gender: String!
     phoneNumber: String!
     bloodType: String!
