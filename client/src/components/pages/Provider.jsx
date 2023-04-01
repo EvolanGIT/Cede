@@ -6,22 +6,18 @@ import Auth from "../../utils/auth";
 
 const Provider = () => {
   const { loading, data } = useQuery(RETURN_ALL_CUSTOMERS);
-  //   if (Auth.loggedIn() && Auth.getProfile().data._id === profileId) {
-  //     return <Navigate to="/Provider" />;
-  //   }
   if (loading) {
     return <div>Loading...</div>;
   }
-  const entries = Object.entries(data)
+  const customers = data?.customers
     return (
       <Container>
-        {entries.map((customer) => (
+        {customers.map((customer) => (
           <Card style={{ width: "18rem" }}>
             <Card.Img variant="top" src="holder.js/100px180" />
             <Card.Body>
-              <Card.Title>Title</Card.Title>
+              <Card.Title>{customer.firstName}</Card.Title>
               <Card.Text>
-                {console.log(entries)}
                 Some quick example text to build on the card title and make up
                 the bulk of the card's content.
               </Card.Text>
