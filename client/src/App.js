@@ -49,9 +49,6 @@ function App() {
     <MainWrapper>
     </MainWrapper>
     <SignUp/> */}
-        <header className="App-header">
-    
-    </header>
     </div>
     </ApolloProvider>
   );
