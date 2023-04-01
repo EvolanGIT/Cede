@@ -3,6 +3,7 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Container from "react-bootstrap/Container";
 import Card from "react-bootstrap/Card";
+import {Row, Col} from "react-bootstrap"
 import auth from "../../utils/auth"
 import { useMutation } from "@apollo/client";
 import { LOGIN } from "../../utils/mutations";
@@ -34,15 +35,25 @@ function Login(props) {
 
   return (
     <Container className="mt-3" align="center">
-          <Card className="shadow-lg" style={{backgroundColor: '#0e385c', color:'#959696', width: '25rem'}}>
+
+       
+        <Col xs={12} md={6}>
+          <Card
+            className="shadow-lg flex"
+            style={{
+              backgroundColor: "#0e385c",
+              color: "#959696",
+              width: "25rem",
+            }}
+          >
             <Form onSubmit={handleFormSubmit}>
               <Form.Group className="mx-4 text-start" controlId="formLogin">
                 <Form.Label className="mt-3">Login</Form.Label>
-                <Form.Control 
-                type="email" 
-                placeholder="Enter email"
-                name="email"
-                onChange={handleChange}
+                <Form.Control
+                  type="email"
+                  placeholder="Enter email"
+                  name="email"
+                  onChange={handleChange}
                 />
               </Form.Group>
               <Form.Group
@@ -50,11 +61,11 @@ function Login(props) {
                 controlId="formPassword"
               >
                 <Form.Label>Password</Form.Label>
-                <Form.Control 
-                type="password"  
-                placeholder="Password" 
-                name="password"
-                onChange={handleChange}
+                <Form.Control
+                  type="password"
+                  placeholder="Password"
+                  name="password"
+                  onChange={handleChange}
                 />
               </Form.Group>
               <Button variant="dark" type="submit" className="mb-3">
@@ -62,6 +73,8 @@ function Login(props) {
               </Button>
             </Form>
           </Card>
+        </Col>
+      
     </Container>
   );
 };
