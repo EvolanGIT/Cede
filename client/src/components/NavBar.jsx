@@ -6,8 +6,8 @@ import Logo from "../assets/images/cede_logofull-noBG.png"
 
 const NavBar = ({ currentPage, handlePageChange }) => {
   return (
-    // took out bg dark
-    <Navbar style={{ background: "#18313f" }} variant="dark">
+    // took out bg dark style={{ background: "#18313f" }}
+    <Navbar variant="dark">
       <Container>
         <Navbar.Brand
           href="#home"
