@@ -3,10 +3,8 @@ import SignUp from "./pages/SignUp";
 import Login from "./pages/Login";
 import NavBar from "./NavBar";
 import ContactUs from "./pages/ContactUs";
-import Provider from "./pages/Provider";
 import Home from "./pages/Home";
 import Dashboard from "./pages/Dashboard";
-import { Container } from "react-bootstrap";
 
 const MainContainer = () => {
   const [currentPage, setCurrentPage] = useState("Home");
@@ -21,9 +19,6 @@ const MainContainer = () => {
     if (currentPage === "Login") {
       return <Login />;
     }
-    if (currentPage === "Provider") {
-      return <Provider />;
-    }
     if (currentPage === "Dashboard") {
       return <Dashboard />;
     }
@@ -31,20 +26,24 @@ const MainContainer = () => {
   };
   const handlePageChange = (page) => setCurrentPage(page);
   return (
-    <div 
-    style={{ 
-      backgroundImage: `url("https://wallpaperaccess.com/full/4178252.jpg")`,
-      backgroundSize: '100%',
-      backgroundRepeat: 'repeat-y',
-      height: 'auto',
-      width: "100%",
-      objectFit:"scale-down"}}
-      >
+    <div
+      
+      style={{
+        background: "linear-gradient(to right, rgb(14,39,67), #141c25)",
+        // backgroundImage: `url("https://wallpaperaccess.com/full/4178252.jpg")`,
+        // backgroundSize: "100%",
+        // backgroundRepeat: "repeat-y",
+        height: "100vw",
+        overflow: "visible"
+        // width: "100%",
+        // objectFit: "scale-down",
+      }}
+    >
       {/* We are passing the currentPage from state and the function to update it */}
       <NavBar currentPage={currentPage} handlePageChange={handlePageChange} />
-    {/* Here we are calling the renderPage method which will return a component  */}
+      {/* Here we are calling the renderPage method which will return a component  */}
       {renderPage()}
-      </div>
-    );
-  };
+    </div>
+  );
+};
 export default MainContainer;
