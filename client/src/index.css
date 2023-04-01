@@ -5,6 +5,11 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  background: linear-gradient(to right, rgb(14,39,67), #141c25);       
+  height: 100vw
+  /* backgroundImage: `url("https://wallpaperaccess.com/full/4178252.jpg")` */
+
 }
 
 code {
