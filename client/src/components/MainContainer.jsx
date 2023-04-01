@@ -3,8 +3,10 @@ import SignUp from "./pages/SignUp";
 import Login from "./pages/Login";
 import NavBar from "./NavBar";
 import ContactUs from "./pages/ContactUs";
+import Provider from "./pages/Provider";
 import Home from "./pages/Home";
 import Dashboard from "./pages/Dashboard";
+import { Container } from "react-bootstrap";
 
 const MainContainer = () => {
   const [currentPage, setCurrentPage] = useState("Home");
@@ -18,6 +20,9 @@ const MainContainer = () => {
     }
     if (currentPage === "Login") {
       return <Login />;
+    }
+    if (currentPage === "Provider") {
+      return <Provider />;
     }
     if (currentPage === "Dashboard") {
       return <Dashboard />;
@@ -41,9 +46,9 @@ const MainContainer = () => {
     >
       {/* We are passing the currentPage from state and the function to update it */}
       <NavBar currentPage={currentPage} handlePageChange={handlePageChange} />
-      {/* Here we are calling the renderPage method which will return a component  */}
+    {/* Here we are calling the renderPage method which will return a component  */}
       {renderPage()}
-    </div>
-  );
-};
+      </div>
+    );
+  };
 export default MainContainer;
