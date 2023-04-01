@@ -5,6 +5,7 @@ import NavBar from "./NavBar";
 import ContactUs from "./pages/ContactUs";
 import Home from "./pages/Home";
 import Dashboard from "./pages/Dashboard";
+import Provider from "./pages/Provider";
 
 const MainContainer = () => {
   const [currentPage, setCurrentPage] = useState("Home");
@@ -21,6 +22,9 @@ const MainContainer = () => {
     }
     if (currentPage === "Dashboard") {
       return <Dashboard />;
+    }
+    if (currentPage === "Provider") {
+      return <Provider />;
     }
     return <ContactUs />;
   };
