@@ -24,3 +24,28 @@ export const RETURN_ALL_CUSTOMERS = gql`
     }
   }
 `;
+
+export const RETURN_ONE_CUSTOMER = gql`
+query Me {
+    me {
+      firstName
+      lastName
+      gender
+      username
+      phoneNumber
+      email
+      doNotResuscitate
+      doNotIntubate
+      bloodType
+      birthdate
+      EmergencyContact {
+        firstName
+        lastName
+        phoneNumber
+      }
+      Allergy {
+        allergyDescription
+      }
+    }
+  }
+`

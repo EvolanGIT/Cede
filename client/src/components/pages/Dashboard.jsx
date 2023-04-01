@@ -8,16 +8,16 @@ import {
   Stack,
 } from "react-bootstrap";
 import React, { useState } from "react";
-import { gql, useQuery, useMutation } from "@apollo/client";
+import { useQuery } from "@apollo/client";
 import AuthService from "../../utils/auth";
-import { RETURN_ALL_CUSTOMERS } from "../../utils/queries";
+import { RETURN_ONE_CUSTOMER } from "../../utils/queries";
 
 function Dashboard(props) {
   //  Grab id from localstorage
   // localStorage.getItem(id);
   //grab query to find One customer and pass id using useQuery hook
   //destructure loading and data from the hook
-  const { data, loading, error } = useQuery(RETURN_ALL_CUSTOMERS);
+  const { data, loading, error } = useQuery(RETURN_ONE_CUSTOMER);
   
   // const token = AuthService.loggedIn() ? AuthService.getToken() : null; 
   // if (!token){
