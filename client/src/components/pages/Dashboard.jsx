@@ -27,38 +27,10 @@ function Dashboard(props) {
   console.log(data);
   //create ternary where loading if true shows loading screen else show data.
 
-  const loggedIn = () => {
+  // const loggedIn = () => {
   if (loading) return "Loading...";
   if (error) return <h1 style={{ color: "Red" }}>{error.message}</h1>;
   const customer = data?.customers;
-   
-
-    // return <Link to="/Dashboard" />;
-  // {
-  //   firstName: "Ben",
-  //   lastName: "Salem",
-  //   dob: "01/01/1980",
-  //   email: "ben@mail.com",
-  //   gender: "Male",
-  //   phoneNumber: "123-456-7890",
-  //   bloodType: "AB+",
-  //   doNotResuscitate: false,
-  //   doNotIntubate: true,
-  //   allergies: ["Peanuts", "Penicillin"],
-  //   emergencyContacts: [
-  //     {
-  //       firstName: "Some",
-  //       lastName: "Body",
-  //       phoneNumber: "234-567-8901",
-  //     },
-  //     {
-  //       firstName: "Bob",
-  //       lastName: "Salem",
-  //       phoneNumber: "345-678-9012",
-  //     },
-  //   ],
-  // };
-  // const [editCustomer] = useMutation(EDIT_CUSTOMER);
   // This renders the patient information page
   return (
     <Container>
@@ -85,9 +57,9 @@ function Dashboard(props) {
             <h2>Clinical Information</h2>
             <p>Blood Type: {customer.bloodType}</p>
             <p>
-              Do not Resuscitate: {customer.doNotResuscitate ? "Yes" : "No"}
+              Do not Resuscitate: {customer.doNotResuscitate}
             </p>
-            <p>Do not Intubate: {customer.doNotIntubate ? "Yes" : "No"}</p>
+            <p>Do not Intubate: {customer.doNotIntubate}</p>
 
             {/* <h3>Allergies</h3>
             <ul class="nopadding" style={{ listStyle: "none" }}>
@@ -130,5 +102,5 @@ function Dashboard(props) {
   );
 }
 
-}
+// }
 export default Dashboard;
