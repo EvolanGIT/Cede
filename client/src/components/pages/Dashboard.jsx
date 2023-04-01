@@ -15,22 +15,23 @@ import { RETURN_ALL_CUSTOMERS } from "../../utils/queries";
 function Dashboard(props) {
   //  Grab id from localstorage
   // localStorage.getItem(id);
-  
   //grab query to find One customer and pass id using useQuery hook
   //destructure loading and data from the hook
   const { data, loading, error } = useQuery(RETURN_ALL_CUSTOMERS);
- console.log(data);
-
-    
+  
+  // const token = AuthService.loggedIn() ? AuthService.getToken() : null; 
+  // if (!token){
+  //   return
+  // }
+  
+  console.log(data);
   //create ternary where loading if true shows loading screen else show data.
+
   const loggedIn = () => {
   if (loading) return "Loading...";
   if (error) return <h1 style={{ color: "Red" }}>{error.message}</h1>;
   const customer = data?.customers;
-    const token = AuthService.loggedIn() ? AuthService.getToken() : null; 
-    if (!token){
-      return
-    }
+   
 
     // return <Link to="/Dashboard" />;
   // {
