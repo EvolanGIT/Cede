@@ -16,17 +16,27 @@ const NavBar = ({ currentPage }) => {
     // took out bg dark style={{ background: "#18313f" }}
     <Navbar expand="lg" variant="dark">
       <Container>
-        <Nav>
         <Navbar.Brand
           href="/"
+          //onClick={() => handlePageChange("Home")}
           className={currentPage === "Home" ? "nav-link active" : "nav-link"}
         >
           <img width="200" className="" src={Logo} />
         </Navbar.Brand>
+        <Nav className="me-auto">
+          <Nav.Link
+            href="/signup"
+            //onClick={() => handlePageChange("SignUp")}
+            className={
+              currentPage === "SignUp" ? "nav-link active" : "nav-link"
+            }
+          >
+            Sign-Up
+          </Nav.Link>
 
           {AuthService.loggedIn() ? (
             <Nav.Link
-              to="/login"
+              href="/login"
               onClick={logout}
               className={
                 currentPage === "Home" ? "nav-link active" : "nav-link"
@@ -45,6 +55,7 @@ const NavBar = ({ currentPage }) => {
               Login
             </Nav.Link>
           )}
+          {AuthService.loggedIn() ? (
           <Nav.Link
             href="/dashboard"
             //onClick={() => handlePageChange("Dashboard")}
@@ -53,7 +64,7 @@ const NavBar = ({ currentPage }) => {
             }
           >
             Dashboard
-          </Nav.Link>
+          </Nav.Link>):(null)}
           <Nav.Link
             href="/contact-us"
             //onClick={() => handlePageChange("ContactUs")}
