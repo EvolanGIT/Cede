@@ -1,7 +1,22 @@
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import MainContainer from './components/MainContainer';
-//import {QRCodeCanvas} from 'qrcode.react';  //importing component from QR library
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+ 
+import {QRCodeCanvas} from 'qrcode.react';  //importing component from QR library
+
+import ContactUs from "./components/pages/ContactUs";
+import Dashboard from "./components/pages/Dashboard";
+import Login from "./components/pages/Login";
+//import editInfo from "./components/pages/editInfo";
+import Provider from "./components/pages/Provider";
+import QrCode from "./components/pages/QrCode";
+import SignUp from "./components/pages/SignUp";
+import CustomerInfo from "./components/pages/CustomerInfo";
+import NavBar from "./components/NavBar";
+
+
+
 
 import {
   ApolloClient,
@@ -38,14 +53,28 @@ const client = new ApolloClient({
 
 function App() {
   return (
-    <ApolloProvider client= {client}>
-    <div className="App">
-      <MainContainer/>
-    {/* <NavBar/>
+    <ApolloProvider client={client}>
+      {/* Added Routes to Navbar DI  */}
+      <Router>
+        <div className="App">
+            <NavBar/> 
+          <Routes>
+            <Route path="/" element={<MainContainer />}></Route>
+            <Route path="/contact-us" element={<ContactUs />}></Route>
+            <Route path="/dashboard/:customer_id" element={<Dashboard />}></Route>
+            <Route path="/login" element={<Login />}></Route>
+            {/* <Route path="/edit" element={<editInfo />}></Route> */}
+            <Route path="/provider" element={<Provider />}></Route>
+            <Route path="/qr" element={<QrCode />}></Route>
+            <Route path="/signup" element={<SignUp />}></Route>
+            <Route path="/customer-info" element={<CustomerInfo />}></Route>
+          </Routes>
+          {/* <NavBar/>
     <MainWrapper>
     </MainWrapper>
     <SignUp/> */}
-    </div>
+        </div>
+      </Router>
     </ApolloProvider>
   );
 }

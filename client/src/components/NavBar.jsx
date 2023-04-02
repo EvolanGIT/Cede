@@ -6,7 +6,8 @@ import AuthService from "../utils/auth";
 
 
 
-const NavBar = ({ currentPage, handlePageChange }) => {
+// Commented out the handlePage Change and used an href through React Router instead DI
+const NavBar = ({ currentPage }) => {
 
  const logout = (event) => {
    event.preventDefault();
@@ -18,16 +19,16 @@ const NavBar = ({ currentPage, handlePageChange }) => {
     <Navbar variant="dark">
       <Container>
         <Navbar.Brand
-          href="#home"
-          onClick={() => handlePageChange("Home")}
+          href="/"
+          //onClick={() => handlePageChange("Home")}
           className={currentPage === "Home" ? "nav-link active" : "nav-link"}
         >
           <img width="200" className="" src={Logo} />
         </Navbar.Brand>
         <Nav className="me-auto">
           <Nav.Link
-            href="#signUp"
-            onClick={() => handlePageChange("SignUp")}
+            href="/signup"
+            //onClick={() => handlePageChange("SignUp")}
             className={
               currentPage === "SignUp" ? "nav-link active" : "nav-link"
             }
@@ -37,20 +38,19 @@ const NavBar = ({ currentPage, handlePageChange }) => {
 
           {AuthService.loggedIn() ? (
             <Nav.Link
-              href="#Home"
-              onClick={() => handlePageChange("Login")}
+              href="/login"
+              onClick={() => logout()}
               className={
                 currentPage === "Home" ? "nav-link active" : "nav-link"
               }
-            >
-              <a href="#home" onClick={logout}>
+            >              
                 Logout
-              </a>
+             
             </Nav.Link>
           ) : (
             <Nav.Link
-              href="#login"
-              onClick={() => handlePageChange("Login")}
+              href="/login"
+              //onClick={() => handlePageChange("Login")}
               className={
                 currentPage === "Login" ? "nav-link active" : "nav-link"
               }
@@ -59,8 +59,8 @@ const NavBar = ({ currentPage, handlePageChange }) => {
             </Nav.Link>
           )}
           <Nav.Link
-            href="#dashboard"
-            onClick={() => handlePageChange("Dashboard")}
+            href="/dashboard"
+            //onClick={() => handlePageChange("Dashboard")}
             className={
               currentPage === "Dashboard" ? "nav-link disabled" : "nav-link"
             }
@@ -68,8 +68,8 @@ const NavBar = ({ currentPage, handlePageChange }) => {
             Dashboard
           </Nav.Link>
           <Nav.Link
-            href="#contactUs"
-            onClick={() => handlePageChange("ContactUs")}
+            href="/contact-us"
+            //onClick={() => handlePageChange("ContactUs")}
             className={
               currentPage === "ContactUs" ? "nav-link active" : "nav-link"
             }
@@ -77,8 +77,8 @@ const NavBar = ({ currentPage, handlePageChange }) => {
             Contact Us
           </Nav.Link>
           <Nav.Link
-            href="#Provider"
-            onClick={() => handlePageChange("Provider")}
+            href="/provider"
+            //onClick={() => handlePageChange("Provider")}
             className={
               currentPage === "Provider" ? "nav-link active" : "nav-link"
             }

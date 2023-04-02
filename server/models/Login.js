@@ -5,11 +5,7 @@ const loginSchema = new Schema({
     _id: {
         type:String
     },
-  username: {
-    type: String,
-    required: true,
-    unique: true,
-  },
+ 
   password: {
     type: String,
     required: true,

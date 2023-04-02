@@ -1,6 +1,6 @@
 import {Container, Card, Button, Col, Row} from "react-bootstrap";
 import ERpic from "../../assets/images/pexels-cottonbro-studio-7579831.jpg"
-
+import {Link} from "react-router-dom"
 
 const Home = () => {
   return (
@@ -15,7 +15,7 @@ const Home = () => {
           >
             Take Control of Your information
           </h1>
-          </Col>
+        </Col>
         <Col></Col>
       </Row>
       <Row>
@@ -35,14 +35,14 @@ const Home = () => {
                 will keep your pertinent information at the ready for you and
                 your provider. Join us today!
               </Card.Text>
+              <Link to="/signup">
                 <Button
                   className=""
                   style={{ backgroundColor: "grey", align: "center" }}
                 >
-           
                   Sign up
-              
                 </Button>
+              </Link>
             </Card.Body>
           </Card>
         </Col>
