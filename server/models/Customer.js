@@ -5,11 +5,10 @@ const Allergy = require("./Allergy");
 const bcrypt = require("bcrypt");
 
 const customerSchema = new Schema({
-  
   username: {
     type: String,
     // required: true,
-    unique: true,
+    // unique: true,
   },
   login: [
     {
@@ -82,12 +81,12 @@ const customerSchema = new Schema({
   accountType: {
     type: String,
     enum: ["Customer", "Provider"],
-    default: "Customer"
+    default: "Customer",
   },
 });
 
-customerSchema.pre('save', async function (next) {
-  if (this.isNew || this.isModified('password')) {
+customerSchema.pre("save", async function (next) {
+  if (this.isNew || this.isModified("password")) {
     const saltRounds = 10;
     this.password = await bcrypt.hash(this.password, saltRounds);
   }
