@@ -44,11 +44,11 @@ phoneNumber: String
 
 type Auth {
 token: ID!
-Customer: Customer
+customer: Customer
 }
 
 type Query {
-Customer(customerId: ID!): Customer
+customer(customerId: ID!): Customer
 customers: [Customer]!
 me: Customer
 }

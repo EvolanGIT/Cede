@@ -61,7 +61,7 @@ function App() {
           <Routes>
             <Route path="/" element={<MainContainer />}></Route>
             <Route path="/contact-us" element={<ContactUs />}></Route>
-            <Route path="/dashboard/:customer_id" element={<Dashboard />}></Route>
+            <Route path="/dashboard/:customerId" element={<Dashboard />}></Route>
             <Route path="/login" element={<Login />}></Route>
             {/* <Route path="/edit" element={<editInfo />}></Route> */}
             <Route path="/provider" element={<Provider />}></Route>
