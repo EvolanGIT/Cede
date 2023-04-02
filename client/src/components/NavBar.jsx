@@ -14,7 +14,7 @@ const NavBar = ({ currentPage }) => {
 
   return (
     // took out bg dark style={{ background: "#18313f" }}
-    <Navbar variant="dark">
+    <Navbar expand="lg" variant="dark">
       <Container>
         <Nav>
         <Navbar.Brand
@@ -33,12 +33,11 @@ const NavBar = ({ currentPage }) => {
               }
             >              
                 Logout
-             
             </Nav.Link>
           ) : (
             <Nav.Link
               href="/login"
-              //onClick={() => handlePageChange("Login")}
+              // onClick={() => handlePageChange("Login")}
               className={
                 currentPage === "Login" ? "nav-link active" : "nav-link"
               }
