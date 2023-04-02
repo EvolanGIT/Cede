@@ -9,7 +9,7 @@ const QrCode = () => {
       <Col>
         <Card>
           <p>Scan My QR Code</p>
-          <QRCodeCanvas value="https://www.facebook.com" /> bookmark this page
+          <QRCodeCanvas value="localhost:3000/dashboard" /> bookmark this page
           for your convinience{" "}
         </Card>
       </Col>

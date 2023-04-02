@@ -17,7 +17,8 @@ function Dashboard(props) {
   // localStorage.getItem(id);
   //grab query to find One customer and pass id using useQuery hook
   //destructure loading and data from the hook
-  const { data, loading, error } = useQuery(RETURN_ONE_CUSTOMER);
+  const { loading, error, data } = useQuery(RETURN_ONE_CUSTOMER)
+
   
   // const token = AuthService.loggedIn() ? AuthService.getToken() : null; 
   // if (!token){

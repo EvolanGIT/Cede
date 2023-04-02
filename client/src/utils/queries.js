@@ -25,9 +25,11 @@ export const RETURN_ALL_CUSTOMERS = gql`
   }
 `;
 
+
+
 export const RETURN_ONE_CUSTOMER = gql`
-query Me {
-    me {
+query Customer {
+    customer {
       firstName
       lastName
       gender
