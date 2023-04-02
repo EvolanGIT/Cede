@@ -2,9 +2,17 @@ import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import Logo from "../assets/images/cede_logofull-noBG.png"
+import AuthService from "../utils/auth";
+
 
 
 const NavBar = ({ currentPage, handlePageChange }) => {
+
+ const logout = (event) => {
+   event.preventDefault();
+   AuthService.logout();
+ };
+
   return (
     // took out bg dark style={{ background: "#18313f" }}
     <Navbar variant="dark">
@@ -26,13 +34,30 @@ const NavBar = ({ currentPage, handlePageChange }) => {
           >
             Sign-Up
           </Nav.Link>
-          <Nav.Link
-            href="#login"
-            onClick={() => handlePageChange("Login")}
-            className={currentPage === "Login" ? "nav-link active" : "nav-link"}
-          >
-            Login
-          </Nav.Link>
+
+          {AuthService.loggedIn() ? (
+            <Nav.Link
+              href="#Home"
+              onClick={() => handlePageChange("Login")}
+              className={
+                currentPage === "Home" ? "nav-link active" : "nav-link"
+              }
+            >
+              <a href="#home" onClick={logout}>
+                Logout
+              </a>
+            </Nav.Link>
+          ) : (
+            <Nav.Link
+              href="#login"
+              onClick={() => handlePageChange("Login")}
+              className={
+                currentPage === "Login" ? "nav-link active" : "nav-link"
+              }
+            >
+              Login
+            </Nav.Link>
+          )}
           <Nav.Link
             href="#dashboard"
             onClick={() => handlePageChange("Dashboard")}
