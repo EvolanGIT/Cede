@@ -4,7 +4,7 @@ import Form from "react-bootstrap/Form";
 import Container from "react-bootstrap/Container";
 import Card from "react-bootstrap/Card";
 import {Row, Col} from "react-bootstrap"
-import auth from "../../utils/auth"
+import AuthService from "../../utils/auth"
 import { useMutation } from "@apollo/client";
 import { LOGIN } from "../../utils/mutations";
 
@@ -19,7 +19,7 @@ function Login(props) {
         variables: { email: formState.email, password: formState.password },
       });
       const token = mutationResponse.data.login.token;
-      auth.login(token);
+      AuthService.login(token);
     } catch (err) {
       console.error(err);
     }
