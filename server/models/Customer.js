@@ -5,8 +5,7 @@ const Allergy = require("./Allergy");
 const bcrypt = require("bcrypt");
 
 const customerSchema = new Schema({
-  
-  
+
   login: [
     {
       type: Schema.Types.ObjectId,
