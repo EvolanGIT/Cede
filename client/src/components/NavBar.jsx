@@ -16,73 +16,69 @@ const NavBar = ({ currentPage }) => {
     // took out bg dark style={{ background: "#18313f" }}
     <Navbar expand="lg" variant="dark">
       <Container>
-        <Navbar.Brand
-          href="/"
-          //onClick={() => handlePageChange("Home")}
-          className={currentPage === "Home" ? "nav-link active" : "nav-link"}
-        >
-          <img width="200" className="" src={Logo} />
+        <Navbar.Brand>
+          <Link
+            to="/"
+            className={currentPage === "Home" ? "nav-link active" : "nav-link"}
+          >
+            <img width="200" className="" src={Logo} />
+          </Link>
         </Navbar.Brand>
         <Nav className="me-auto">
-          <Nav.Link
-            href="/signup"
-            //onClick={() => handlePageChange("SignUp")}
+          <Link
+            to="/signup"
             className={
               currentPage === "SignUp" ? "nav-link active" : "nav-link"
             }
           >
             Sign-Up
-          </Nav.Link>
-
+          </Link>
           {AuthService.loggedIn() ? (
-            <Nav.Link
-              href="/login"
+            <Link
+              to="/login"
               onClick={logout}
               className={
                 currentPage === "Home" ? "nav-link active" : "nav-link"
               }
-            >              
-                Logout
-            </Nav.Link>
+            >
+              Logout
+            </Link>
           ) : (
-            <Nav.Link
-              href="/login"
-              // onClick={() => handlePageChange("Login")}
+            <Link
+              to="/login"
               className={
                 currentPage === "Login" ? "nav-link active" : "nav-link"
               }
             >
               Login
-            </Nav.Link>
+            </Link>
           )}
           {AuthService.loggedIn() ? (
-          <Nav.Link
-            href="/dashboard"
-            //onClick={() => handlePageChange("Dashboard")}
-            className={
-              currentPage === "Dashboard" ? "nav-link disabled" : "nav-link"
-            }
-          >
-            Dashboard
-          </Nav.Link>):(null)}
-          <Nav.Link
-            href="/contact-us"
-            //onClick={() => handlePageChange("ContactUs")}
+            <Link
+              to="/dashboard"
+              className={
+                currentPage === "Dashboard" ? "nav-link disabled" : "nav-link"
+              }
+            >
+              Dashboard
+            </Link>
+          ) : null}
+          <Link
+            to="/contact-us"
             className={
               currentPage === "ContactUs" ? "nav-link active" : "nav-link"
             }
           >
             Contact Us
-          </Nav.Link>
-          <Nav.Link
-            href="/provider"
-            //onClick={() => handlePageChange("Provider")}
+          </Link>
+          <Link
+            to="/provider"
             className={
               currentPage === "Provider" ? "nav-link active" : "nav-link"
             }
           >
             Provider
-          </Nav.Link>
+          </Link>
         </Nav>
       </Container>
     </Navbar>
