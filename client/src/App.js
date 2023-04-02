@@ -2,9 +2,7 @@ import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import MainContainer from './components/MainContainer';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
- 
 import {QRCodeCanvas} from 'qrcode.react';  //importing component from QR library
-
 import ContactUs from "./components/pages/ContactUs";
 import Dashboard from "./components/pages/Dashboard";
 import Login from "./components/pages/Login";
@@ -59,15 +57,15 @@ function App() {
         <div className="App">
             <NavBar/> 
           <Routes>
-            <Route path="/" element={<MainContainer />}></Route>
-            <Route path="/contact-us" element={<ContactUs />}></Route>
-            <Route path="/dashboard/:customerId" element={<Dashboard />}></Route>
-            <Route path="/login" element={<Login />}></Route>
-            {/* <Route path="/edit" element={<editInfo />}></Route> */}
-            <Route path="/provider" element={<Provider />}></Route>
-            <Route path="/qr" element={<QrCode />}></Route>
-            <Route path="/signup" element={<SignUp />}></Route>
-            <Route path="/customer-info" element={<CustomerInfo />}></Route>
+            <Route path="/" element={<MainContainer />}/>
+            <Route path="/contact-us" element={<ContactUs />}/>
+            <Route path="/dashboard/:customerId" element={<Dashboard />}/>
+            <Route path="/login" element={<Login />}/>
+            {/* <Route path="/edit" element={<editInfo />}/> */}
+            <Route path="/provider" element={<Provider />}/>
+            <Route path="/qr" element={<QrCode />}/>
+            <Route path="/signup" element={<SignUp />}/>
+            <Route path="/customer-info" element={<CustomerInfo />}/>
           </Routes>
           {/* <NavBar/>
     <MainWrapper>
