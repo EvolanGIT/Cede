@@ -1,18 +1,16 @@
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
-import Logo from "../assets/images/cede_logofull-noBG.png"
+import Logo from "../assets/images/cede_logofull-noBG.png";
 import AuthService from "../utils/auth";
-
-
+import { Link } from "react-router-dom";
 
 // Commented out the handlePage Change and used an href through React Router instead DI
 const NavBar = ({ currentPage }) => {
-
- const logout = (event) => {
-   event.preventDefault();
-   AuthService.logout();
- };
+  const logout = (event) => {
+    event.preventDefault();
+    AuthService.logout();
+  };
 
   return (
     // took out bg dark style={{ background: "#18313f" }}
@@ -57,6 +55,7 @@ const NavBar = ({ currentPage }) => {
               Login
             </Nav.Link>
           )}
+          {AuthService.loggedIn() ? (
           <Nav.Link
             href="/dashboard"
             //onClick={() => handlePageChange("Dashboard")}
@@ -65,7 +64,7 @@ const NavBar = ({ currentPage }) => {
             }
           >
             Dashboard
-          </Nav.Link>
+          </Nav.Link>):(null)}
           <Nav.Link
             href="/contact-us"
             //onClick={() => handlePageChange("ContactUs")}
