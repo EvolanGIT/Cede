@@ -31,8 +31,9 @@ const MainContainer = () => {
   const handlePageChange = (page) => setCurrentPage(page);
   return (
     <div >
+      {/* Nav bar was doubling up so I took it out DI*/}
       {/* We are passing the currentPage from state and the function to update it */}
-      <NavBar currentPage={currentPage} handlePageChange={handlePageChange} />
+      {/* <NavBar currentPage={currentPage} handlePageChange={handlePageChange} /> */}
       {/* Here we are calling the renderPage method which will return a component  */}
       {renderPage()}
     </div>

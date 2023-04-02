@@ -25,7 +25,7 @@ login: [Login]
 
 type Login {
 _id: ID
-username: String
+
 password: String
 loginType: String
 }

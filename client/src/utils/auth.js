@@ -31,7 +31,7 @@
         // Saves user token to localStorage
         localStorage.setItem('id_token', idToken);
 
-        window.location.assign('/');
+        window.location.assign('/dashboard');
     }
 
     logout() {

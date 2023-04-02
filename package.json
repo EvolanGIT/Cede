@@ -26,5 +26,8 @@
   "homepage": "https://github.com/EvolanGIT/Cede#readme",
   "devDependencies": {
     "concurrently": "^8.0.1"
+  },
+  "dependencies": {
+    "react-router": "^6.10.0"
   }
 }
