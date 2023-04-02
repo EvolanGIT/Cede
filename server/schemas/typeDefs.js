@@ -3,7 +3,6 @@ const { gql } = require("apollo-server-express");
 const typeDefs = gql`
 type Customer {
 _id: ID
-username: String
 birthdate: String
 firstName: String
 lastName: String
@@ -26,7 +25,7 @@ login: [Login]
 
 type Login {
 _id: ID
-username: String
+
 password: String
 loginType: String
 }

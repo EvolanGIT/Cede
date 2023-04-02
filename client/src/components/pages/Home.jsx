@@ -1,6 +1,6 @@
 import {Container, Card, Button, Col, Row} from "react-bootstrap";
 import ERpic from "../../assets/images/pexels-cottonbro-studio-7579831.jpg"
-//import HomePic from "../../assets/images/thumbnail_IMG_0710sm.png"
+import {Link} from "react-router-dom"
 
 const Home = () => {
   return (
@@ -15,23 +15,11 @@ const Home = () => {
           >
             Take Control of Your information
           </h1>
-          {/* <img
-            style={{
-              height: "auto",
-              maxWidth: "30rem",
-              marginBottom: "3rem",
-              borderRadius: "1rem",
-              opacity: ".70",
-              contentFit: "fill",
-            }}
-            src={HomePic}
-            alt=""
-          /> */}
         </Col>
         <Col></Col>
       </Row>
       <Row>
-        <Col md={{ span: 4, offset: 6 }} >
+        <Col md={{ span: 4, offset: 6 }}>
           <Card
             style={{
               backgroundColor: "#18313f",
@@ -47,12 +35,14 @@ const Home = () => {
                 will keep your pertinent information at the ready for you and
                 your provider. Join us today!
               </Card.Text>
-              <Button
-                className=""
-                style={{ backgroundColor: "grey", align: "center" }}
-              >
-                Sign up
-              </Button>
+              <Link to="/signup">
+                <Button
+                  className=""
+                  style={{ backgroundColor: "grey", align: "center" }}
+                >
+                  Sign up
+                </Button>
+              </Link>
             </Card.Body>
           </Card>
         </Col>
