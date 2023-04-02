@@ -16,6 +16,7 @@ const NavBar = ({ currentPage }) => {
     // took out bg dark style={{ background: "#18313f" }}
     <Navbar variant="dark">
       <Container>
+        <Nav>
         <Navbar.Brand
           href="/"
           className={currentPage === "Home" ? "nav-link active" : "nav-link"}
@@ -26,7 +27,7 @@ const NavBar = ({ currentPage }) => {
           {AuthService.loggedIn() ? (
             <Nav.Link
               to="/login"
-              onClick={() => logout()}
+              onClick={logout}
               className={
                 currentPage === "Home" ? "nav-link active" : "nav-link"
               }
