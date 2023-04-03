@@ -1,8 +1,8 @@
-import './App.css';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import MainContainer from './components/MainContainer';
+import "./App.css";
+import "bootstrap/dist/css/bootstrap.min.css";
+import MainContainer from "./components/MainContainer";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import {QRCodeCanvas} from 'qrcode.react';  //importing component from QR library
+import { QRCodeCanvas } from "qrcode.react"; //importing component from QR library
 import ContactUs from "./components/pages/ContactUs";
 import Dashboard from "./components/pages/Dashboard";
 import Login from "./components/pages/Login";
@@ -13,32 +13,28 @@ import SignUp from "./components/pages/SignUp";
 import CustomerInfo from "./components/pages/CustomerInfo";
 import NavBar from "./components/NavBar";
 
-
-
-
 import {
   ApolloClient,
   InMemoryCache,
   ApolloProvider,
   createHttpLink,
-} from '@apollo/client';
-import { setContext } from '@apollo/client/link/context';
-
+} from "@apollo/client";
+import { setContext } from "@apollo/client/link/context";
 
 // Construct our main GraphQL API endpoint
 const httpLink = createHttpLink({
-  uri: '/graphql',
+  uri: "/graphql",
 });
 
 // Construct request middleware that will attach the JWT token to every request as an `authorization` header
 const authLink = setContext((_, { headers }) => {
   // get the authentication token from local storage if it exists
-  const token = localStorage.getItem('id_token');
+  const token = localStorage.getItem("id_token");
   // return the headers to the context so httpLink can read them
   return {
     headers: {
       ...headers,
-      authorization: token ? `Bearer ${token}` : '',
+      authorization: token ? `Bearer ${token}` : "",
     },
   };
 });
@@ -55,17 +51,17 @@ function App() {
       {/* Added Routes to Navbar DI  */}
       <Router>
         <div className="App">
-            <NavBar/> 
+          <NavBar />
           <Routes>
-            <Route path="/" element={<MainContainer />}/>
-            <Route path="/contact-us" element={<ContactUs />}/>
-            <Route path="/dashboard/:customerId" element={<Dashboard />}/>
-            <Route path="/login" element={<Login />}/>
+            <Route path="/" element={<MainContainer />} />
+            <Route path="/contact-us" element={<ContactUs />} />
+            <Route path="/dashboard/" element={<Dashboard />} />
+            <Route path="/login" element={<Login />} />
             {/* <Route path="/edit" element={<editInfo />}/> */}
-            <Route path="/provider" element={<Provider />}/>
-            <Route path="/qr" element={<QrCode />}/>
-            <Route path="/signup" element={<SignUp />}/>
-            <Route path="/customer-info" element={<CustomerInfo />}/>
+            <Route path="/provider" element={<Provider />} />
+            <Route path="/qr" element={<QrCode />} />
+            <Route path="/signup" element={<SignUp />} />
+            <Route path="/customer-info" element={<CustomerInfo />} />
           </Routes>
           {/* <NavBar/>
     <MainWrapper>

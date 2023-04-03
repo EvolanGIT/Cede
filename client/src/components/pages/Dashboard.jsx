@@ -8,30 +8,25 @@ import {
   Stack,
 } from "react-bootstrap";
 import React, { useState } from "react";
-import { useQuery } from "@apollo/client";
+import { gql, useQuery } from "@apollo/client";
 import AuthService from "../../utils/auth";
-import { RETURN_ONE_CUSTOMER } from "../../utils/queries";
+import { RETURN_ONE_CUSTOMER, RETURN_ALL_CUSTOMERS } from "../../utils/queries";
 
-function Dashboard(props) {
+export default function Dashboard(props) {
+  //  Grab id from localstorage
+  // localStorage.getItem(_id);
   //grab query to find One customer and pass id using useQuery hook
   const { data, loading, error } = useQuery(RETURN_ONE_CUSTOMER);
-  //  Grab id from localstorage
-  localStorage.getItem(_id);
   //destructure loading and data from the hook
 
-  const token = AuthService.loggedIn() ? AuthService.getToken() : null;
-  if (!token) {
-    return;
-  }
-
-  console.log(data);
   //create ternary where loading if true shows loading screen else show data.
 
   // const loggedIn = () => {
   if (loading) return "Loading...";
   if (error) return <h1 style={{ color: "Red" }}>{error.message}</h1>;
-  const customer = data?.customers;
-
+  // const customer = data?customers;
+  console.log(data);
+  localStorage.setItem("_id", data.me._id);
   // This renders the patient information page
   return (
     <Container>
@@ -48,19 +43,17 @@ function Dashboard(props) {
           <div>
             <h2>Personal Information</h2>
 
-            <p>First Name: {customer.firstName}</p>
-            <p>Last Name: {customer.lastName}</p>
-            <p>DoB: {customer.birthdate}</p>
-            <p>Email: {customer.email}</p>
-            <p>Gender: {customer.gender}</p>
-            <p>Phone Number: {customer.phoneNumber}</p>
+            <p>First Name: {data.me.firstName}</p>
+            <p>Last Name: {data.me.lastName}</p>
+            <p>Date of Birth: {data.me.birthdate}</p>
+            <p>Email: {data.me.email}</p>
+            <p>Gender: {data.me.gender}</p>
+            <p>Phone Number: {data.me.phoneNumber}</p>
 
             <h2>Clinical Information</h2>
-            <p>Blood Type: {customer.bloodType}</p>
-            <p>
-              Do not Resuscitate: {customer.doNotResuscitate ? "Yes" : "No"}
-            </p>
-            <p>Do not Intubate: {customer.doNotIntubate ? "Yes" : "No"}</p>
+            <p>Blood Type: {data.me.bloodType}</p>
+            <p>Do not Resuscitate: {data.me.doNotResuscitate ? "Yes" : "No"}</p>
+            <p>Do not Intubate: {data.me.doNotIntubate ? "Yes" : "No"}</p>
 
             {/* <h3>Allergies</h3>
             <ul class="nopadding" style={{ listStyle: "none" }}>
@@ -86,8 +79,7 @@ function Dashboard(props) {
     </Container>
   );
 }
-
-export default Dashboard;
+// export default Dashboard;
 
 // return <Link to="/Dashboard" />;
 // {

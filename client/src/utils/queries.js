@@ -32,7 +32,6 @@ export const RETURN_ONE_CUSTOMER = gql`
       firstName
       lastName
       gender
-      username
       phoneNumber
       email
       doNotResuscitate

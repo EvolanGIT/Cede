@@ -3,7 +3,7 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Container from "react-bootstrap/Container";
 // import Row from "react-bootstrap/Row";
- import Col from "react-bootstrap/Col";
+import Col from "react-bootstrap/Col";
 import Card from "react-bootstrap/Card";
 //creating a comment
 import { useMutation } from "@apollo/client";
@@ -48,7 +48,7 @@ const SignUp = () => {
 
     const form = event.currentTarget;
     // if (form.checkValidity() === false) {
-      
+
     // }
     console.log(customerData);
     try {
@@ -62,7 +62,7 @@ const SignUp = () => {
 
   return (
     <Container className="mt-3 justify-content-center flex" align="center">
-      <Col xs={12} >
+      <Col xs={12}>
         <Card
           className="shadow-lg"
           style={{
@@ -99,6 +99,10 @@ const SignUp = () => {
                 value={lastName}
                 placeholder="Enter last name"
               />
+              <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
+              <Form.Control.Feedback type="invalid">
+                Please Enter A Last Name.
+              </Form.Control.Feedback>
             </Form.Group>
             <Form.Group className="mx-4 text-start">
               <Form.Label className="mt-3">Date of Birth</Form.Label>
@@ -110,10 +114,11 @@ const SignUp = () => {
                 onChange={(e) => setBirthdate(e.target.value)}
                 value={birthdate}
                 placeholder="MM/DD/YYYY"
+                pattern="(0?[1-9]|1[012])/(0?[1-9]|[12][0-9]|3[01])/\d{4}"
               />
               <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
               <Form.Control.Feedback type="invalid">
-                Please Enter Date of Birth
+                Enter as MM/DD/YYYY
               </Form.Control.Feedback>
             </Form.Group>
             <Form.Group className="mx-4 text-start">

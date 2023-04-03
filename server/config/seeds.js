@@ -67,7 +67,6 @@ connection.once("open", async () => {
 
   await Customer.create([
     {
-     
       firstName: "Yon",
       lastName: "Bermudez",
       birthdate: "<1986-03-02>",
@@ -89,7 +88,6 @@ connection.once("open", async () => {
 
   await Customer.create([
     {
-     
       firstName: "Edwin",
       lastName: "Pietrowski",
       birthdate: "<1984-05-27>",
@@ -111,7 +109,6 @@ connection.once("open", async () => {
 
   await Customer.create([
     {
-      
       firstName: "Alberto",
       lastName: "De Armas",
       birthdate: "<1989-11-13>",
