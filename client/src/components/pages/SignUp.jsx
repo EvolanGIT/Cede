@@ -9,6 +9,7 @@ import Card from "react-bootstrap/Card";
 import { useMutation } from "@apollo/client";
 import { ADD_CUSTOMER_NEW } from "../../utils/mutations";
 import AuthService from "../../utils/auth";
+import { Link } from "react-router-dom";
 
 const SignUp = () => {
   const style = {
@@ -209,8 +210,13 @@ const SignUp = () => {
                   </div>
                 ))}
                 <Form.Label className="mt-3">
-                  In case of an emergency, would you want the paramedics to try
-                  to resuscitate you?
+                  Do you have a &nbsp;
+                  <Link 
+                    className="link-success"
+                    role="button"
+                    to="https://www.opencaregiving.com/glossary/do-not-resuscitate-dnr#:~:text=A%20DNR%20is%20an%20order,person's%20heart%20or%20breathing%20stops.">
+                   DNR order?
+                  </Link>
                 </Form.Label>
                 <br />
                 <div>
@@ -237,8 +243,13 @@ const SignUp = () => {
                 </div>
                 <br />
                 <Form.Label className="mt-3">
-                  In case of an emergency, would you want the paramedics to try
-                  to intubate you?
+                  Do you have a &nbsp;
+                  <Link 
+                    className="link-success"
+                    role="button"
+                    to="https://www.opencaregiving.com/glossary/do-not-intubate-dni#:~:text=A%20DNI%20order%20is%20authorized,the%20passage%20to%20their%20lungs.">
+                    DNI order?
+                  </Link> 
                 </Form.Label>
                 <br />
                 <div>
