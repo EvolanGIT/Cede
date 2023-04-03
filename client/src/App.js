@@ -53,10 +53,10 @@ function App() {
         <div className="App">
           <NavBar />
           <Routes>
-            <Route path="/" element={<MainContainer />} />
-            <Route path="/contact-us" element={<ContactUs />} />
-            <Route path="/dashboard/" element={<Dashboard />} />
-            <Route path="/login" element={<Login />} />
+            <Route path="/" element={<MainContainer />}/>
+            <Route path="/contact-us" element={<ContactUs />}/>
+            <Route path="/dashboard" element={<Dashboard />}/>
+            <Route path="/login" element={<Login />}/>
             {/* <Route path="/edit" element={<editInfo />}/> */}
             <Route path="/provider" element={<Provider />} />
             <Route path="/qr" element={<QrCode />} />

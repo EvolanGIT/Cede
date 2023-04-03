@@ -7,6 +7,7 @@ import {Row, Col} from "react-bootstrap"
 import AuthService from "../../utils/auth"
 import { useMutation } from "@apollo/client";
 import { LOGIN } from "../../utils/mutations";
+import { Link } from "react-router-dom"
 
 function Login(props) {
   const [formState, setFormState] = useState({ email: '', password: '' });
@@ -68,9 +69,11 @@ function Login(props) {
                   onChange={handleChange}
                 />
               </Form.Group>
-              <Button variant="dark" type="submit" className="mb-3">
-                Login
-              </Button>
+              <Link to="/dashboard">
+                <Button variant="dark" type="submit" className="mb-3">
+                  Login
+                </Button>
+              </Link>
             </Form>
           </Card>
         </Col>
