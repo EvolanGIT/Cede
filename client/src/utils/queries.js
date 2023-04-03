@@ -33,7 +33,6 @@ query Customer {
       firstName
       lastName
       gender
-      username
       phoneNumber
       email
       doNotResuscitate
