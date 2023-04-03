@@ -2,13 +2,15 @@ import React, { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Container from "react-bootstrap/Container";
+// import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
- import Col from "react-bootstrap/Col";
+import Col from "react-bootstrap/Col";
 import Card from "react-bootstrap/Card";
 //creating a comment
 import { useMutation } from "@apollo/client";
 import { ADD_CUSTOMER_NEW } from "../../utils/mutations";
-import Auth from "../../utils/auth";
+import AuthService from "../../utils/auth";
 
 const SignUp = () => {
   const style = {
@@ -31,6 +33,8 @@ const SignUp = () => {
   const genders = ["Male", "Female", "Undisclosed"];
 
   const handleSubmit = async (event) => {
+    event.preventDefault();
+    event.stopPropagation();
     const customerData = {
       firstName,
       lastName,
@@ -45,14 +49,13 @@ const SignUp = () => {
     };
 
     const form = event.currentTarget;
-    if (form.checkValidity() === false) {
-      event.preventDefault();
-      event.stopPropagation();
-    }
+    // if (form.checkValidity() === false) {
+
+    // }
     console.log(customerData);
     try {
       const { data } = await addCustomer({ variables: { ...customerData } });
-      Auth.login(data.addCustomer.token);
+      AuthService.login(data.addCustomer.token);
     } catch (err) {
       console.error(err);
     }
