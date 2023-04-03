@@ -69,7 +69,7 @@ function Login(props) {
                   onChange={handleChange}
                 />
               </Form.Group>
-              <Link to="/dashboard/">
+              <Link to="/dashboard">
                 <Button variant="dark" type="submit" className="mb-3">
                   Login
                 </Button>
