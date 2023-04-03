@@ -11,7 +11,7 @@ const Home = () => {
         <Col>
           <h1
             className=""
-            style={{ marginTop: "", margin: "rem", color: "#b6b7b8" }}
+            style={{  margin: ".25rem", color: "#b6b7b8" }}
           >
             Take Control of Your information
           </h1>
@@ -19,14 +19,16 @@ const Home = () => {
         <Col></Col>
       </Row>
       <Row>
-        <Col md={{ span: 4, offset: 6 }}>
+        <Col md={{ span: 8, offset: 5 }}>
           <Card
             style={{
+              height: "auto",
+              maxWidth: "75%",
               backgroundColor: "#18313f",
               color: "#b6b7b8",
               align: "center",
-              marginBottom: "1rem",
-              width: "30rem",
+              marginBottom: "1rem"
+              
             }}
           >
             <Card.Body>
