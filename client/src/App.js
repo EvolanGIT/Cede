@@ -12,6 +12,7 @@ import QrCode from "./components/pages/QrCode";
 import SignUp from "./components/pages/SignUp";
 import CustomerInfo from "./components/pages/CustomerInfo";
 import NavBar from "./components/NavBar";
+import { useState, useEffect } from "react";
 
 import {
   ApolloClient,
@@ -46,6 +47,11 @@ const client = new ApolloClient({
 });
 
 function App() {
+  const [userId, setuserId] = useState("");
+  useEffect(() => {
+    return setuserId(localStorage.getItem("_id"));
+  }, []);
+  console.log(userId);
   return (
     <ApolloProvider client={client}>
       {/* Added Routes to Navbar DI  */}
@@ -55,7 +61,7 @@ function App() {
           <Routes>
             <Route path="/" element={<MainContainer />}/>
             <Route path="/contact-us" element={<ContactUs />}/>
-            <Route path="/dashboard" element={<Dashboard />}/>
+            <Route path={`/dashboard/${userId}`} element={<Dashboard />}/>
             <Route path="/login" element={<Login />}/>
             {/* <Route path="/edit" element={<editInfo />}/> */}
             <Route path="/provider" element={<Provider />} />

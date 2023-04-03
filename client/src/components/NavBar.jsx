@@ -4,6 +4,7 @@ import Navbar from "react-bootstrap/Navbar";
 import Logo from "../assets/images/cede_logofull-noBG.png";
 import AuthService from "../utils/auth";
 import { Link } from "react-router-dom";
+import { useState, useEffect } from "react";
 
 // Commented out the handlePage Change and used an href through React Router instead DI
 const NavBar = ({ currentPage }) => {
@@ -11,6 +12,12 @@ const NavBar = ({ currentPage }) => {
     event.preventDefault();
     AuthService.logout();
   };
+
+  const [userId, setuserId] = useState("");
+  useEffect(() => {
+    return setuserId(localStorage.getItem("_id"));
+  }, []);
+  console.log(userId);
 
   return (
     // took out bg dark style={{ background: "#18313f" }}
@@ -55,7 +62,7 @@ const NavBar = ({ currentPage }) => {
           )}
           {AuthService.loggedIn() ? (
             <Link
-              to="/dashboard"
+              to={`/dashboard/${userId}`}
               className={
                 currentPage === "Dashboard" ? "nav-link disabled" : "nav-link"
               }
