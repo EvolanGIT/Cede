@@ -25,11 +25,10 @@ export const RETURN_ALL_CUSTOMERS = gql`
   }
 `;
 
-
-
 export const RETURN_ONE_CUSTOMER = gql`
-query Customer {
-    customer {
+  query Me {
+    me {
+      _id
       firstName
       lastName
       gender
@@ -49,4 +48,4 @@ query Customer {
       }
     }
   }
-`
+`;

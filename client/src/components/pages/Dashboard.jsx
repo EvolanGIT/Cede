@@ -8,58 +8,25 @@ import {
   Stack,
 } from "react-bootstrap";
 import React, { useState } from "react";
-import { useQuery } from "@apollo/client";
+import { gql, useQuery } from "@apollo/client";
 import AuthService from "../../utils/auth";
-import { RETURN_ONE_CUSTOMER } from "../../utils/queries";
+import { RETURN_ONE_CUSTOMER, RETURN_ALL_CUSTOMERS } from "../../utils/queries";
 
-function Dashboard(props) {
+export default function Dashboard(props) {
   //  Grab id from localstorage
-  // localStorage.getItem(id);
+  // localStorage.getItem(_id);
   //grab query to find One customer and pass id using useQuery hook
+  const { data, loading, error } = useQuery(RETURN_ONE_CUSTOMER);
   //destructure loading and data from the hook
-  const { loading, error, data } = useQuery(RETURN_ONE_CUSTOMER)
 
-  
-  // const token = AuthService.loggedIn() ? AuthService.getToken() : null; 
-  // if (!token){
-  //   return
-  // }
-  
-  console.log(data);
   //create ternary where loading if true shows loading screen else show data.
 
-  const loggedIn = () => {
+  // const loggedIn = () => {
   if (loading) return "Loading...";
   if (error) return <h1 style={{ color: "Red" }}>{error.message}</h1>;
-  const customer = data?.customers;
-   
-
-    // return <Link to="/Dashboard" />;
-  // {
-  //   firstName: "Ben",
-  //   lastName: "Salem",
-  //   dob: "01/01/1980",
-  //   email: "ben@mail.com",
-  //   gender: "Male",
-  //   phoneNumber: "123-456-7890",
-  //   bloodType: "AB+",
-  //   doNotResuscitate: false,
-  //   doNotIntubate: true,
-  //   allergies: ["Peanuts", "Penicillin"],
-  //   emergencyContacts: [
-  //     {
-  //       firstName: "Some",
-  //       lastName: "Body",
-  //       phoneNumber: "234-567-8901",
-  //     },
-  //     {
-  //       firstName: "Bob",
-  //       lastName: "Salem",
-  //       phoneNumber: "345-678-9012",
-  //     },
-  //   ],
-  // };
-  // const [editCustomer] = useMutation(EDIT_CUSTOMER);
+  // const customer = data?customers;
+  console.log(data);
+  localStorage.setItem("_id", data.me._id);
   // This renders the patient information page
   return (
     <Container>
@@ -76,19 +43,17 @@ function Dashboard(props) {
           <div>
             <h2>Personal Information</h2>
 
-            <p>First Name: {customer.firstName}</p>
-            <p>Last Name: {customer.lastName}</p>
-            <p>DoB: {customer.birthdate}</p>
-            <p>Email: {customer.email}</p>
-            <p>Gender: {customer.gender}</p>
-            <p>Phone Number: {customer.phoneNumber}</p>
+            <p>First Name: {data.me.firstName}</p>
+            <p>Last Name: {data.me.lastName}</p>
+            <p>Date of Birth: {data.me.birthdate}</p>
+            <p>Email: {data.me.email}</p>
+            <p>Gender: {data.me.gender}</p>
+            <p>Phone Number: {data.me.phoneNumber}</p>
 
             <h2>Clinical Information</h2>
-            <p>Blood Type: {customer.bloodType}</p>
-            <p>
-              Do not Resuscitate: {customer.doNotResuscitate ? "Yes" : "No"}
-            </p>
-            <p>Do not Intubate: {customer.doNotIntubate ? "Yes" : "No"}</p>
+            <p>Blood Type: {data.me.bloodType}</p>
+            <p>Do not Resuscitate: {data.me.doNotResuscitate ? "Yes" : "No"}</p>
+            <p>Do not Intubate: {data.me.doNotIntubate ? "Yes" : "No"}</p>
 
             {/* <h3>Allergies</h3>
             <ul class="nopadding" style={{ listStyle: "none" }}>
@@ -106,30 +71,38 @@ function Dashboard(props) {
                     Phone Number: {contact.phoneNumber}
                   </div>
                 </li> */}
-              {/* ))}
+            {/* ))}
             </ul> */}
           </div>
         </div>
       </Card>
-      {/* <Stack direction="vertical" gap={6}>
-        <Button
-          href="#editInfo"
-          // onClick={Edit}
-          variant="info"
-          type="submit"
-          size="lg"
-          className="mb-3 w-50"
-        >
-          Update Profile
-        </Button>
-        <br></br>
-        <Button variant="danger" type="Submit" size="sm" className="mb-3 w-25">
-          Delete Profile
-        </Button>
-      </Stack> */}
     </Container>
   );
 }
+// export default Dashboard;
 
-}
-export default Dashboard;
+// return <Link to="/Dashboard" />;
+// {
+//   firstName: "Ben",
+//   lastName: "Salem",
+//   dob: "01/01/1980",
+//   email: "ben@mail.com",
+//   gender: "Male",
+//   phoneNumber: "123-456-7890",
+//   bloodType: "AB+",
+//   doNotResuscitate: false,
+//   doNotIntubate: true,
+//   allergies: ["Peanuts", "Penicillin"],
+//   emergencyContacts: [
+//     {
+//       firstName: "Some",
+//       lastName: "Body",
+//       phoneNumber: "234-567-8901",
+//     },
+//     {
+//       firstName: "Bob",
+//       lastName: "Salem",
+//       phoneNumber: "345-678-9012",
+//     },
+//   ],
+// };
