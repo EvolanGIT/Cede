@@ -196,7 +196,9 @@ const SignUp = () => {
               </Form.Group>
               <Form.Group className="mx-4 text-start">
                 <Form.Label className="mt-3">Blood Type</Form.Label>
+                <Row>
                 {bloodTypes.map((type) => (
+                  <Col>
                   <div key={type} className="mb-3">
                     <Form.Check
                       type={"checkbox"}
@@ -208,7 +210,9 @@ const SignUp = () => {
                       value={type}
                     />
                   </div>
+                  </Col>
                 ))}
+                </Row>
                 <Form.Label className="mt-3">
                   Do you have a &nbsp;
                   <Link 
