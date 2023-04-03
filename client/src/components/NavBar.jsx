@@ -32,6 +32,7 @@ const NavBar = ({ currentPage }) => {
           </Link>
         </Navbar.Brand>
         <Nav className="me-auto">
+          {AuthService.loggedIn() ? (null):
           <Link
             to="/signup"
             className={
@@ -39,7 +40,7 @@ const NavBar = ({ currentPage }) => {
             }
           >
             Sign-Up
-          </Link>
+          </Link>}
           {AuthService.loggedIn() ? (
             <Link
               to="/login"
@@ -62,12 +63,22 @@ const NavBar = ({ currentPage }) => {
           )}
           {AuthService.loggedIn() ? (
             <Link
-              to={`/dashboard/${userId}`}
+              to='{`/dashboard/${userId}`}'
               className={
                 currentPage === "Dashboard" ? "nav-link disabled" : "nav-link"
               }
             >
               Dashboard
+            </Link>
+          ) : null}
+          {AuthService.loggedIn() ? (
+            <Link
+              to="/qr"
+              className={
+                currentPage === "QrCode" ? "nav-link disabled" : "nav-link"
+              }
+            >
+              QR Code
             </Link>
           ) : null}
           <Link
