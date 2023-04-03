@@ -26,6 +26,9 @@ const NavBar = ({ currentPage }) => {
     return <div>Loading...</div>;
   }
   const customers = data?.me
+  console.log(customers);
+  console.log(data);
+
   return (
     // took out bg dark style={{ background: "#18313f" }}
     <Navbar expand="sm" variant="dark">
@@ -70,7 +73,7 @@ const NavBar = ({ currentPage }) => {
           )}
           {AuthService.loggedIn() ? (
             <Link
-              to='{`/dashboard/${userId}`}'
+              to={`/dashboard/${userId}`}
               className={
                 currentPage === "Dashboard" ? "nav-link disabled" : "nav-link"
               }
@@ -113,7 +116,7 @@ const NavBar = ({ currentPage }) => {
             >
               Provider
             </Link>
-          ) : null}
+          ) : "hello"}
         </Nav>
       </Container>
     </Navbar>
