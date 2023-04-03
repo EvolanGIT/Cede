@@ -6,10 +6,14 @@ import ContactUs from "./pages/ContactUs";
 import Home from "./pages/Home";
 import Dashboard from "./pages/Dashboard";
 import Provider from "./pages/Provider";
+import { useQuery } from "@apollo/client";
+import { RETURN_ONE_CUSTOMER } from "../utils/queries";
 
 const MainContainer = () => {
   const [currentPage, setCurrentPage] = useState("Home");
   // This method is checking to see what the value of `currentPage` is. Depending on the value of currentPage, we return the corresponding component to render.
+
+  
   const renderPage = () => {
     if (currentPage === "Home") {
       return <Home />;
@@ -28,14 +32,11 @@ const MainContainer = () => {
     }
     return <ContactUs />;
   };
-  const handlePageChange = (page) => setCurrentPage(page);
+
   return (
     <div >
-      {/* Nav bar was doubling up so I took it out DI*/}
-      {/* We are passing the currentPage from state and the function to update it */}
-      {/* <NavBar currentPage={currentPage} handlePageChange={handlePageChange} /> */}
-      {/* Here we are calling the renderPage method which will return a component  */}
       {renderPage()}
+      
     </div>
   );
 };
