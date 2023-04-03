@@ -5,6 +5,8 @@ import Logo from "../assets/images/cede_logofull-noBG.png";
 import AuthService from "../utils/auth";
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
+import { RETURN_ONE_CUSTOMER } from "../utils/queries";
+import { useQuery } from "@apollo/client";
 
 // Commented out the handlePage Change and used an href through React Router instead DI
 const NavBar = ({ currentPage }) => {
@@ -19,6 +21,11 @@ const NavBar = ({ currentPage }) => {
   }, []);
   console.log(userId);
 
+  const { loading, data } = useQuery(RETURN_ONE_CUSTOMER);
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+  const customers = data?.me
   return (
     // took out bg dark style={{ background: "#18313f" }}
     <Navbar expand="sm" variant="dark">
@@ -78,14 +85,24 @@ const NavBar = ({ currentPage }) => {
           >
             Contact Us
           </Link>
-          <Link
+          {/* <Link
             to="/provider"
             className={
               currentPage === "Provider" ? "nav-link active" : "nav-link"
             }
           >
             Provider
-          </Link>
+          </Link> */}
+          {customers?.__typename === "Provider" ? (
+            <Link
+            to="/provider"
+            className={
+              currentPage === "Provider" ? "nav-link active" : "nav-link"
+            }
+            >
+              Provider
+            </Link>
+          ) : null}
         </Nav>
       </Container>
     </Navbar>
