@@ -14,7 +14,7 @@ const NavBar = ({ currentPage }) => {
 
   return (
     // took out bg dark style={{ background: "#18313f" }}
-    <Navbar expand="lg" variant="dark">
+    <Navbar expand="sm" variant="dark">
       <Container>
         <Navbar.Brand>
           <Link

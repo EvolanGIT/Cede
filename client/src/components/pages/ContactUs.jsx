@@ -32,7 +32,7 @@ const ContactUs = () => {
         style={{
           backgroundColor: "#0e385c",
           color: "#959696",
-          width: "25rem",
+          width: "70vw",
         }}
       >
         <Form onSubmit={handlesubmit}>
