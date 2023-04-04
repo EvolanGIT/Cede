@@ -54,7 +54,7 @@ const SignUp = () => {
     console.log(customerData);
     try {
       const { data } = await addCustomer({ variables: { ...customerData } });
-      AuthService.login(data.addCustomer.token);
+      AuthService.login(data.addCustomer.token, data.addCustomer.customer._id);
     } catch (err) {
       console.error(err);
     }
