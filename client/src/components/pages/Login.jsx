@@ -36,46 +36,47 @@ function Login(props) {
 
   return (
     <Container className="mt-3" align="center">
-
-       
-        <Col xs={12} md={6}>
-          <Card
-            className="shadow-lg flex"
-            style={{
-              backgroundColor: "#0e385c",
-              color: "#959696",
-              width: "25rem",
-            }}
-          >
-            <Form onSubmit={handleFormSubmit}>
-              <Form.Group className="mx-4 text-start" controlId="formLogin">
-                <Form.Label className="mt-3">Login</Form.Label>
-                <Form.Control
-                  type="email"
-                  placeholder="Enter email"
-                  name="email"
-                  onChange={handleChange}
-                />
-              </Form.Group>
-              <Form.Group
-                className="mx-4 m-3 text-start"
-                controlId="formPassword"
-              >
-                <Form.Label>Password</Form.Label>
-                <Form.Control
-                  type="password"
-                  placeholder="Password"
-                  name="password"
-                  onChange={handleChange}
-                />
-              </Form.Group>
-                <Button variant="dark" type="submit" className="mb-3">
-                  Login
-                </Button>
-            </Form>
-          </Card>
-        </Col>
-      
+      <Col xs={10} md={6}>
+        <Card
+          className="shadow-lg flex"
+          style={{
+            backgroundColor: "#0e385c",
+            color: "#959696",
+          }}
+        >
+          <Form onSubmit={handleFormSubmit}>
+            <Form.Group className="mx-4 text-start" controlId="formLogin">
+              <Form.Label className="mt-3">Login</Form.Label>
+              <Form.Control
+                type="email"
+                placeholder="Enter email"
+                name="email"
+                onChange={handleChange}
+              />
+            </Form.Group>
+            <Form.Group
+              className="mx-4 m-3 text-start"
+              controlId="formPassword"
+            >
+              <Form.Label>Password</Form.Label>
+              <Form.Control
+                type="password"
+                placeholder="Password"
+                name="password"
+                onChange={handleChange}
+              />
+            </Form.Group>
+            <Button
+              style={{ background: "#dfe0e1" }}
+              variant="light"
+              type="submit"
+              className="mb-3"
+            >
+              Login
+            </Button>
+          </Form>
+        </Card>
+      </Col>
     </Container>
   );
 };

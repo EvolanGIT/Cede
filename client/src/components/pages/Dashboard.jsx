@@ -30,32 +30,37 @@ export default function Dashboard(props) {
   // This renders the patient information page
   return (
     <Container>
-      <Card
-        className="shadow-lg"
-        style={{
-          alignContent: "center",
-          backgroundColor: "#0e385c",
-          color: "#959696",
-        }}
-      >
-        <div style={{ backgroundColor: "#0e385c", color: "#959696" }}>
-          <h1>Customer Information Sheet</h1>
-          <div>
-            <h2>Personal Information</h2>
+      <center>
+        <Col xs={10} md={8}>
+          <Card
+            className="shadow-lg m-5"
+            style={{
+              borderRadius: "1rem",
+              backgroundColor: "#dfe0e1",
+              color: "#0e2743",
+            }}
+          >
+            <Card.Body>
+              <Card.Title>
+                <h1>Customer Information Sheet</h1>
+                <h2>Personal Information</h2>
+              </Card.Title>
+              <div>
+                <p>First Name: {data.me.firstName}</p>
+                <p>Last Name: {data.me.lastName}</p>
+                <p>Date of Birth: {data.me.birthdate}</p>
+                <p>Email: {data.me.email}</p>
+                <p>Gender: {data.me.gender}</p>
+                <p>Phone Number: {data.me.phoneNumber}</p>
 
-            <p>First Name: {data.me.firstName}</p>
-            <p>Last Name: {data.me.lastName}</p>
-            <p>Date of Birth: {data.me.birthdate}</p>
-            <p>Email: {data.me.email}</p>
-            <p>Gender: {data.me.gender}</p>
-            <p>Phone Number: {data.me.phoneNumber}</p>
+                <h2>Clinical Information</h2>
+                <p>Blood Type: {data.me.bloodType}</p>
+                <p>
+                  Do not Resuscitate: {data.me.doNotResuscitate ? "Yes" : "No"}
+                </p>
+                <p>Do not Intubate: {data.me.doNotIntubate ? "Yes" : "No"}</p>
 
-            <h2>Clinical Information</h2>
-            <p>Blood Type: {data.me.bloodType}</p>
-            <p>Do not Resuscitate: {data.me.doNotResuscitate ? "Yes" : "No"}</p>
-            <p>Do not Intubate: {data.me.doNotIntubate ? "Yes" : "No"}</p>
-
-            {/* <h3>Allergies</h3>
+                {/* <h3>Allergies</h3>
             <ul class="nopadding" style={{ listStyle: "none" }}>
               {customer.allergies.map((allergy, index) => (
                 <li key={index}>{allergy}</li>
@@ -71,11 +76,13 @@ export default function Dashboard(props) {
                     Phone Number: {contact.phoneNumber}
                   </div>
                 </li> */}
-            {/* ))}
+                {/* ))}
             </ul> */}
-          </div>
-        </div>
-      </Card>
+              </div>
+            </Card.Body>
+          </Card>
+        </Col>
+      </center>
     </Container>
   );
 }

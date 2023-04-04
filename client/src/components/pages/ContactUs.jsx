@@ -67,7 +67,12 @@ const ContactUs = () => {
                   required
                 />
               </Form.Group>
-              <Button variant="dark" type="submit" className="m-3">
+              <Button
+                style={{ background: "#dfe0e1" }}
+                variant="light"
+                type="submit"
+                className="m-3"
+              >
                 Submit
               </Button>
             </Form>
