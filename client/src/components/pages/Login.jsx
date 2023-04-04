@@ -21,7 +21,7 @@ function Login(props) {
       const token = mutationResponse.data.login.token;
       const customerId = mutationResponse.data.login.customer._id
       localStorage.setItem("_id", customerId)
-      AuthService.login(token);
+      AuthService.login(token, customerId);
     } catch (err) {
       console.error(err);
     }
