@@ -15,11 +15,11 @@ import { useParams } from "react-router";
 
 export default function Dashboard(props) {
   const { userId } = useParams();
-  
+
   //  Grab id from localstorage
   // localStorage.getItem(_id);
   //grab query to find One customer and pass id using useQuery hook
-  
+
   const { data, loading, error } = useQuery(RETURN_ONE_CUSTOMER, {
     variables: { customerId: userId },
   });
@@ -28,7 +28,8 @@ export default function Dashboard(props) {
   //create ternary where loading if true shows loading screen else show data.
 
   // const loggedIn = () => {
-  if (loading) return "Loading...";
+    
+  if (loading) return <h1 style={{ color: "Green " }}> Now Loading!!!</h1>;
   if (error) return <h1 style={{ color: "Red" }}>{error.message}</h1>;
   const customer = data?.customer;
   console.log(data);
@@ -48,7 +49,7 @@ export default function Dashboard(props) {
           >
             <Card.Body>
               <Card.Title>
-                <h1>me Information Sheet</h1>
+                <h1>Customer Information Sheet</h1>
                 <h2>Personal Information</h2>
               </Card.Title>
               <div>
@@ -61,7 +62,9 @@ export default function Dashboard(props) {
 
             <h2>Clinical Information</h2>
             <p>Blood Type: {customer.bloodType}</p>
-            <p>Do not Resuscitate: {customer.doNotResuscitate ? "Yes" : "No"}</p>
+            <p>
+              Do not Resuscitate: {customer.doNotResuscitate ? "Yes" : "No"}
+            </p>
             <p>Do not Intubate: {customer.doNotIntubate ? "Yes" : "No"}</p>
 
                 {/* <h3>Allergies</h3>
