@@ -23,9 +23,9 @@ const NavBar = ({ currentPage }) => {
 
   const { loading, data } = useQuery(RETURN_ONE_CUSTOMER);
   if (loading) {
-    return <div>Loading...</div>;
+    return <div></div>;
   }
-  const customers = data?.me
+  const customers = data?.me;
   console.log(customers);
   console.log(data);
 
@@ -42,15 +42,16 @@ const NavBar = ({ currentPage }) => {
           </Link>
         </Navbar.Brand>
         <Nav className="me-auto">
-          {AuthService.loggedIn() ? (null):
-          <Link
-            to="/signup"
-            className={
-              currentPage === "SignUp" ? "nav-link active" : "nav-link"
-            }
-          >
-            Sign-Up
-          </Link>}
+          {AuthService.loggedIn() ? null : (
+            <Link
+              to="/signup"
+              className={
+                currentPage === "SignUp" ? "nav-link active" : "nav-link"
+              }
+            >
+              Sign-Up
+            </Link>
+          )}
           {AuthService.loggedIn() ? (
             <Link
               to="/login"
@@ -109,14 +110,16 @@ const NavBar = ({ currentPage }) => {
           </Link> */}
           {customers?.__typename === "Provider" ? (
             <Link
-            to="/provider"
-            className={
-              currentPage === "Provider" ? "nav-link active" : "nav-link"
-            }
+              to="/provider"
+              className={
+                currentPage === "Provider" ? "nav-link active" : "nav-link"
+              }
             >
               Provider
             </Link>
-          ) : "hello"}
+          ) : (
+            ""
+          )}
         </Nav>
       </Container>
     </Navbar>
