@@ -26,7 +26,32 @@ export const RETURN_ALL_CUSTOMERS = gql`
 `;
 
 export const RETURN_ONE_CUSTOMER = gql`
-  query Me {
+  query customer($customerId: ID!) {
+    customer(customerId: $customerId) {
+      _id
+      firstName
+      lastName
+      gender
+      phoneNumber
+      email
+      doNotResuscitate
+      doNotIntubate
+      bloodType
+      birthdate
+      EmergencyContact {
+        firstName
+        lastName
+        phoneNumber
+      }
+      Allergy {
+        allergyDescription
+      }
+    }
+  }
+`;
+
+export const RETURN_ME = gql`
+  query me {
     me {
       _id
       firstName
