@@ -1,16 +1,11 @@
 import {
   Container,
-  Form,
   Card,
-  Button,
   Col,
   Row,
-  Stack,
 } from "react-bootstrap";
-import React, { useState } from "react";
-import { gql, useQuery } from "@apollo/client";
-import AuthService from "../../utils/auth";
-import { RETURN_ONE_CUSTOMER, RETURN_ALL_CUSTOMERS } from "../../utils/queries";
+import { useQuery } from "@apollo/client";
+import { RETURN_ONE_CUSTOMER } from "../../utils/queries";
 import { useParams } from "react-router";
 
 export default function Dashboard(props) {
@@ -25,7 +20,6 @@ export default function Dashboard(props) {
   if (error) return <h1 style={{ color: "Red" }}>{error.message}</h1>;
   const customer = data?.customer;
   console.log(data);
-  // localStorage.setItem("_id", data.me._id);
   // This renders the patient information page
   return (
     <Container>
@@ -116,30 +110,3 @@ export default function Dashboard(props) {
     </Container>
   );
 }
-// export default Dashboard;
-
-// return <Link to="/Dashboard" />;
-// {
-//   firstName: "Ben",
-//   lastName: "Salem",
-//   dob: "01/01/1980",
-//   email: "ben@mail.com",
-//   gender: "Male",
-//   phoneNumber: "123-456-7890",
-//   bloodType: "AB+",
-//   doNotResuscitate: false,
-//   doNotIntubate: true,
-//   allergies: ["Peanuts", "Penicillin"],
-//   emergencyContacts: [
-//     {
-//       firstName: "Some",
-//       lastName: "Body",
-//       phoneNumber: "234-567-8901",
-//     },
-//     {
-//       firstName: "Bob",
-//       lastName: "Salem",
-//       phoneNumber: "345-678-9012",
-//     },
-//   ],
-// };

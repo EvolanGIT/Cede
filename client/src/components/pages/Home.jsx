@@ -5,7 +5,6 @@ import {Link} from "react-router-dom"
 const Home = () => {
   return (
     <Container className="mt-3 justify-content-right" align="center">
-      {/* <h1 style={{color: '#959696'}}>Home Placeholder</h1> */}
       <Row>
         <Col></Col>
         <Col>

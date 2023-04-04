@@ -3,14 +3,14 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Container from "react-bootstrap/Container";
 import Card from "react-bootstrap/Card";
-import {Row, Col} from "react-bootstrap"
+import { Col } from "react-bootstrap"
 import AuthService from "../../utils/auth"
 import { useMutation } from "@apollo/client";
 import { LOGIN } from "../../utils/mutations";
 
 function Login(props) {
   const [formState, setFormState] = useState({ email: '', password: '' });
-  const [login, { error, data }] = useMutation(LOGIN);
+  const [login] = useMutation(LOGIN);
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
