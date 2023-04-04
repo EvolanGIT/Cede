@@ -49,6 +49,7 @@ const client = new ApolloClient({
 
 function App() {
   const [userId, setuserId] = useState("");
+  //usena
   useEffect(() => {
     return setuserId(localStorage.getItem("_id"));
   }, []);
@@ -60,10 +61,10 @@ function App() {
         <div className="App">
           <NavBar />
           <Routes>
-            <Route path="/" element={<MainContainer />}/>
-            <Route path="/contact-us" element={<ContactUs />}/>
-            <Route path={`/dashboard/:userId`} element={<Dashboard />}/>
-            <Route path="/login" element={<Login />}/>
+            <Route path="/" element={<MainContainer />} />
+            <Route path="/contact-us" element={<ContactUs />} />
+            <Route path={`/dashboard/:userId`} element={<Dashboard />} />
+            <Route path="/login" element={<Login />} />
             {/* <Route path="/edit" element={<editInfo />}/> */}
             <Route path="/provider" element={<Provider />} />
             <Route path="/qr" element={<QrCode />} />

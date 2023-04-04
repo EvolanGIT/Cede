@@ -7,7 +7,6 @@ import {Row, Col} from "react-bootstrap"
 import AuthService from "../../utils/auth"
 import { useMutation } from "@apollo/client";
 import { LOGIN } from "../../utils/mutations";
-import { Link } from "react-router-dom"
 
 function Login(props) {
   const [formState, setFormState] = useState({ email: '', password: '' });
