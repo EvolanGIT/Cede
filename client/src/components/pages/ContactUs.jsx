@@ -27,13 +27,13 @@ const ContactUs = () => {
             <Card
               className="shadow-lg"
               style={{
-                backgroundColor: "#0e385c",
+                backgroundColor: "#112a48",
                 color: "#959696",
               }}
             >
               <Form
                 target="_blank"
-                action="https://formsubmit.co/15f392220adba3a026449d40cd6d307c "
+                action="https://formsubmit.co/b354e66fe4ddf916638ae489cc98543b"
                 method="POST"
               >
                 <Form.Group

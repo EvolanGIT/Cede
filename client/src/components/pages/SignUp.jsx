@@ -71,7 +71,7 @@ const SignUp = () => {
               style={{
                 height: "auto",
                 maxWidth: "70%",
-                backgroundColor: "#0e385c",
+                backgroundColor: "#112a48",
                 color: "#b6b7b8",
               }}
             >
