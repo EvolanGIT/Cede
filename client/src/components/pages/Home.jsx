@@ -9,10 +9,7 @@ const Home = () => {
       <Row>
         <Col></Col>
         <Col>
-          <h1
-            className=""
-            style={{  margin: ".25rem", color: "#b6b7b8" }}
-          >
+          <h1 className="" style={{ margin: ".25rem", color: "#dfe0e1" }}>
             Take Control of Your information
           </h1>
         </Col>
@@ -25,10 +22,9 @@ const Home = () => {
               height: "auto",
               maxWidth: "75%",
               backgroundColor: "#18313f",
-              color: "#b6b7b8",
+              color: "#dfe0e1",
               align: "center",
-              marginBottom: "1rem"
-              
+              marginBottom: "1rem",
             }}
           >
             <Card.Body>
@@ -39,8 +35,10 @@ const Home = () => {
               </Card.Text>
               <Link to="/signup">
                 <Button
-                  className=""
-                  style={{ backgroundColor: "grey", align: "center" }}
+                  style={{ background: "#dfe0e1" }}
+                  variant="light"
+                  type="submit"
+                  className="mb-1"
                 >
                   Sign up
                 </Button>
