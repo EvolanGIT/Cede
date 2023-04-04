@@ -31,7 +31,15 @@ const NavBar = ({ currentPage }) => {
 
   return (
     // took out bg dark style={{ background: "#18313f" }}
-    <Navbar expand="sm" variant="dark">
+    <Navbar
+      style={{
+        background: "linear-gradient(45deg, #000b10, #112a48 )",
+        opacity: ".85",
+      }}
+      expand="sm"
+      className="shadow-lg"
+      variant="dark"
+    >
       <Container>
         <Navbar.Brand>
           <Link

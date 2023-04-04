@@ -12,6 +12,7 @@ import QrCode from "./components/pages/QrCode";
 import SignUp from "./components/pages/SignUp";
 import CustomerInfo from "./components/pages/CustomerInfo";
 import NavBar from "./components/NavBar";
+import Footer from "./components/Footer";
 import { useState, useEffect } from "react";
 
 import {
@@ -69,10 +70,7 @@ function App() {
             <Route path="/signup" element={<SignUp />} />
             <Route path="/customer-info" element={<CustomerInfo />} />
           </Routes>
-          {/* <NavBar/>
-    <MainWrapper>
-    </MainWrapper>
-    <SignUp/> */}
+          <Footer />
         </div>
       </Router>
     </ApolloProvider>
