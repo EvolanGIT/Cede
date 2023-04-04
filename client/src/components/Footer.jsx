@@ -1,5 +1,5 @@
 import React from "react";
-import { Container, Row, Col, Navbar, Nav } from "react-bootstrap";
+import { Container, Row, Col, Navbar } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import CodesmanLogo from "../assets/images/4C.png";
 
@@ -29,21 +29,12 @@ return (
                 className=""
                 style={{ background: "#0e2743", opacity: ".80" }}
                 src={CodesmanLogo}
+                alt="Codesmen logo"
               />
             </Link>
           </Navbar.Brand>
         </Col>
         <Col></Col>
-        {/* <Col md={4}>
-          <Nav>
-            <Link href="#">Link 1</Link>
-            <Link href="#">Link 2</Link>
-            <Link href="#">Link 3</Link>
-          </Nav>
-        </Col>
-        <Col md={2} style={{ color: "#dfe0e1" }}>
-          <p>&copy; {new Date().getFullYear()} CEDE</p>
-        </Col> */}
       </Row>
     </Container>
   </footer>
