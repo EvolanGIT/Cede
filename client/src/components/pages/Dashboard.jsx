@@ -37,21 +37,36 @@ export default function Dashboard(props) {
   // This renders the patient information page
   return (
     <Container>
-      <center>
-        <Col xs={10} md={8}>
+      <Row>
+        <Col>
           <Card
-            className="shadow-lg m-5"
+            className="shadow-lg "
             style={{
               borderRadius: "1rem",
               backgroundColor: "#dfe0e1",
               color: "#0e2743",
             }}
           >
+            <Card.Title>
+              <h1>Customer Information Sheet</h1>
+            </Card.Title>
+          </Card>
+        </Col>
+      </Row>
+      <Row>
+        <Col xs={12} md={6}>
+          <Card
+            className="shadow-lg m-2"
+            style={{
+              borderRadius: "1rem",
+              backgroundColor: "#dfe0e1",
+              color: "#0e2743",
+            }}
+          >
+            <Card.Title>
+              <h2>Personal Information</h2>
+            </Card.Title>
             <Card.Body>
-              <Card.Title>
-                <h1>Customer Information Sheet</h1>
-                <h2>Personal Information</h2>
-              </Card.Title>
               <div>
                 <p>First Name: {customer.firstName}</p>
                 <p>Last Name: {customer.lastName}</p>
@@ -59,15 +74,36 @@ export default function Dashboard(props) {
                 <p>Email: {customer.email}</p>
                 <p>Gender: {customer.gender}</p>
                 <p>Phone Number: {customer.phoneNumber}</p>
+              </div>
+            </Card.Body>
+          </Card>
+        </Col>
+        <Col xs={12} md={6}>
+          <Card
+            className="shadow-lg m-2"
+            style={{
+              borderRadius: "1rem",
+              backgroundColor: "#dfe0e1",
+              color: "#0e2743",
+            }}
+          >
+            <Card.Title>
+              <h2>Clinical Information</h2>
+            </Card.Title>
+            <Card.Body>
+              <div>
+                <p>Blood Type: {customer.bloodType}</p>
+                <p>
+                  Do not Resuscitate: {customer.doNotResuscitate ? "Yes" : "No"}
+                </p>
+                <p>Do not Intubate: {customer.doNotIntubate ? "Yes" : "No"}</p>
+              </div>
+            </Card.Body>
+          </Card>
+        </Col>
+      </Row>
 
-            <h2>Clinical Information</h2>
-            <p>Blood Type: {customer.bloodType}</p>
-            <p>
-              Do not Resuscitate: {customer.doNotResuscitate ? "Yes" : "No"}
-            </p>
-            <p>Do not Intubate: {customer.doNotIntubate ? "Yes" : "No"}</p>
-
-                {/* <h3>Allergies</h3>
+      {/* <h3>Allergies</h3>
             <ul class="nopadding" style={{ listStyle: "none" }}>
               {customer.allergies.map((allergy, index) => (
                 <li key={index}>{allergy}</li>
@@ -83,13 +119,8 @@ export default function Dashboard(props) {
                     Phone Number: {contact.phoneNumber}
                   </div>
                 </li> */}
-                {/* ))}
+      {/* ))}
             </ul> */}
-              </div>
-            </Card.Body>
-          </Card>
-        </Col>
-      </center>
     </Container>
   );
 }

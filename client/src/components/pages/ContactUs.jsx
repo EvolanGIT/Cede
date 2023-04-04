@@ -27,7 +27,7 @@ const ContactUs = () => {
             <Card
               className="shadow-lg"
               style={{
-                backgroundColor: "#0e385c",
+                backgroundColor: "#112a48",
                 color: "#959696",
               }}
             >

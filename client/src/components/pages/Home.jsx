@@ -16,7 +16,7 @@ const Home = () => {
         <Col></Col>
       </Row>
       <Row>
-        <Col md={{ span: 8, offset: 5 }}>
+        <Col md={{ span: 8, offset: 4 }}>
           <Card
             style={{
               height: "auto",
@@ -48,8 +48,8 @@ const Home = () => {
         </Col>
       </Row>
       <Row>
-        <div>
-          <img
+        <div className="mb-1">
+          <img          
             style={{
               height: "auto",
               maxWidth: "40%",

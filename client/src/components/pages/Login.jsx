@@ -42,7 +42,7 @@ function Login(props) {
         <Card
           className="shadow-lg flex"
           style={{
-            backgroundColor: "#0e385c",
+            backgroundColor: "#112a48",
             color: "#959696",
           }}
         >
