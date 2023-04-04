@@ -12,10 +12,7 @@ import AuthService from "../../utils/auth";
 import { Link } from "react-router-dom";
 
 const SignUp = () => {
-  // const style = {
-  //   control: { width: "50vw" },
-  // };
-
+  
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [birthdate, setBirthdate] = useState("");
@@ -46,11 +43,7 @@ const SignUp = () => {
       gender,
       bloodType,
     };
-
-    const form = event.currentTarget;
-    // if (form.checkValidity() === false) {
-
-    // }
+    
     console.log(customerData);
     try {
       const { data } = await addCustomer({ variables: { ...customerData } });
@@ -87,7 +80,6 @@ const SignUp = () => {
                 >
                   <Form.Label className="mt-3">First Name</Form.Label>
                   <Form.Control
-                    // style={style.control}
                     required
                     type="text"
                     name="firstName"
@@ -104,7 +96,6 @@ const SignUp = () => {
                   <Form.Label className="mt-3">Last Name</Form.Label>
                   <Form.Control
                     required
-                    // style={style.control}
                     type="phone"
                     name="lastName"
                     onChange={(e) => setLastName(e.target.value)}
@@ -116,7 +107,6 @@ const SignUp = () => {
                   <Form.Label className="mt-3">Date of Birth</Form.Label>
                   <Form.Control
                     required
-                    // style={style.control}
                     type="text"
                     name="birthdate"
                     onChange={(e) => setBirthdate(e.target.value)}
@@ -132,7 +122,6 @@ const SignUp = () => {
                   <Form.Label className="mt-3">Email address</Form.Label>
                   <Form.Control
                     required
-                    // style={style.control}
                     type="email"
                     name="email"
                     onChange={(e) => setEmail(e.target.value)}
@@ -149,7 +138,6 @@ const SignUp = () => {
                   <Form.Label className="mt-3">Password </Form.Label>
                   <Form.Control
                     required
-                    // style={style.control}
                     type="password"
                     name="password"
                     onChange={(e) => setPassword(e.target.value)}
@@ -182,7 +170,6 @@ const SignUp = () => {
                 <Form.Group className="mx-4 text-start">
                   <Form.Label className="mt-3">Phone Number</Form.Label>
                   <Form.Control
-                    // style={style.control}
                     required
                     type="phone"
                     name="phoneNumber"
