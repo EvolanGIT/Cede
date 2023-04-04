@@ -33,7 +33,7 @@ const ContactUs = () => {
             >
               <Form
                 target="_blank"
-                action="https://formsubmit.co/cedeqr@gmail.com"
+                action="https://formsubmit.co/b354e66fe4ddf916638ae489cc98543b"
                 method="POST"
               >
                 <Form.Group
