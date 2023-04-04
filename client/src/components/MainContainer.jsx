@@ -1,13 +1,11 @@
 import { useState } from "react";
 import SignUp from "./pages/SignUp";
 import Login from "./pages/Login";
-import NavBar from "./NavBar";
 import ContactUs from "./pages/ContactUs";
 import Home from "./pages/Home";
 import Dashboard from "./pages/Dashboard";
 import Provider from "./pages/Provider";
-import { useQuery } from "@apollo/client";
-import { RETURN_ONE_CUSTOMER } from "../utils/queries";
+
 
 const MainContainer = () => {
   const [currentPage, setCurrentPage] = useState("Home");
