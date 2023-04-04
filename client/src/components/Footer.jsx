@@ -18,7 +18,7 @@ return (
     <Container>
       <Row className="">
         <Col></Col>
-        <Col md={2} variant="light" style={{ color: "#dfe0e1" }}>
+        <Col md={2} variant="light" style={{ color: "#dfe0e1", fontSize:"11px", paddingTop:"15px" }}>
           <p>Proudly brought to you by:</p>
         </Col>
         <Col md={2}>
