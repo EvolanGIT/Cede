@@ -2,7 +2,6 @@ import Container from "react-bootstrap/Container";
 import { useQuery } from "@apollo/client";
 import { RETURN_ALL_CUSTOMERS } from "../../utils/queries";
 import Card from "react-bootstrap/Card";
-import Auth from "../../utils/auth";
 
 const Provider = () => {
   const { loading, data } = useQuery(RETURN_ALL_CUSTOMERS);
