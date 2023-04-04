@@ -16,18 +16,10 @@ import { useParams } from "react-router";
 export default function Dashboard(props) {
   const { userId } = useParams();
 
-  //  Grab id from localstorage
-  // localStorage.getItem(_id);
-  //grab query to find One customer and pass id using useQuery hook
-
   const { data, loading, error } = useQuery(RETURN_ONE_CUSTOMER, {
     variables: { customerId: userId },
   });
-  //destructure loading and data from the hook
-
-  //create ternary where loading if true shows loading screen else show data.
-
-  // const loggedIn = () => {
+  
     
   if (loading) return <h1 style={{ color: "Green " }}> Now Loading!!!</h1>;
   if (error) return <h1 style={{ color: "Red" }}>{error.message}</h1>;
